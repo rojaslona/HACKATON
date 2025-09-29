@@ -9,7 +9,26 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f8f9fa;
+    background: linear-gradient(-45deg, #f8f9fa, #e8f5e8, #f0f8ff, #fff5f5);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+}
+
+/* Animación sutil de fondo deportivo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(231, 76, 60, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(46, 204, 113, 0.03) 0%, transparent 50%);
+    z-index: -1;
+    animation: floatBubbles 20s ease-in-out infinite;
 }
 
 .container {
@@ -125,12 +144,60 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: 
+        linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%),
+        url('images/Corredora.png');
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: white;
     padding: 120px 0 80px;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de partículas deportivas en hero */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* Partículas grandes */
+        radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 85% 75%, rgba(231, 76, 60, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 45% 15%, rgba(255, 255, 255, 0.08) 0%, transparent 15%),
+        /* Partículas medianas */
+        radial-gradient(circle at 75% 35%, rgba(255, 255, 255, 0.06) 0%, transparent 12%),
+        radial-gradient(circle at 25% 85%, rgba(231, 76, 60, 0.1) 0%, transparent 18%),
+        radial-gradient(circle at 65% 65%, rgba(255, 255, 255, 0.05) 0%, transparent 10%);
+    animation: heroParticles 18s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Overlay animado para mejor legibilidad */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(102, 126, 234, 0.1) 0%, 
+        transparent 30%, 
+        rgba(118, 75, 162, 0.1) 70%, 
+        rgba(231, 76, 60, 0.1) 100%);
+    animation: overlayShift 12s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
 }
 
 .hero-container {
@@ -471,32 +538,352 @@ body {
     color: #666;
 }
 
-/* Footer */
-.footer {
-    background: #333;
+/* ===========================================
+   CONTACT SECTION STYLES
+   =========================================== */
+
+.contact {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e74c3c 100%);
     color: white;
-    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo deportivo animado */
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 60%),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    animation: contactWave 12s ease-in-out infinite;
+    z-index: 1;
+}
+
+.contact .container {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Información de contacto */
+.contact-info {
+    animation: slideInLeft 1s ease;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-item i {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+    margin-top: 0.2rem;
+    color: #ffffff;
+    animation: pulse 2s infinite;
+}
+
+.contact-item h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.contact-item p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+/* Enlaces sociales en contacto */
+.contact-info .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    animation: slideInLeft 1.2s ease;
+}
+
+.contact-info .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-info .social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Formulario de newsletter */
+.contact-form {
+    animation: slideInRight 1s ease;
+}
+
+.newsletter-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.newsletter-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.newsletter-form h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
     text-align: center;
+    color: #ffffff;
+}
+
+.newsletter-form p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+.form-group {
+    display: flex;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.form-group:focus-within {
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.form-group input {
+    flex: 1;
+    padding: 1.2rem 1.5rem;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: #666;
+}
+
+.form-group button {
+    padding: 1.2rem 1.5rem;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.form-group button:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* ===========================================
+   FOOTER STYLES - MEJORADO
+   =========================================== */
+
+.footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+    color: white;
+    padding: 3rem 0 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de ondas en footer */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(231, 76, 60, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 50%);
+    animation: footerWave 15s ease-in-out infinite;
+    z-index: 1;
+}
+
+.footer .container {
+    position: relative;
+    z-index: 2;
 }
 
 .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2rem;
 }
 
+.footer-section {
+    animation: fadeInUp 1s ease;
+}
+
+.footer-section h4 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #e74c3c;
+    position: relative;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 30px;
+    height: 2px;
+    background: #e74c3c;
+    animation: expandLine 2s ease;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-section ul li a:hover {
+    color: #e74c3c;
+    transform: translateX(5px);
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Logo en footer */
 .footer-logo {
     display: flex;
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
     color: #e74c3c;
+    margin-bottom: 1rem;
+    animation: pulse 3s infinite;
 }
 
-.footer-logo i {
-    margin-right: 0.5rem;
-    font-size: 1.8rem;
+/* Enlaces sociales en footer */
+.footer .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(231, 76, 60, 0.2);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.footer .social-link:hover {
+    background: #e74c3c;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* Información de contacto en footer */
+.footer .contact-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.footer .contact-info i {
+    margin-right: 0.8rem;
+    color: #e74c3c;
+    width: 20px;
+    animation: pulse 2s infinite;
+}
+
+/* Footer bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-credits {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
 }
 
 /* Animations */
@@ -556,7 +943,344 @@ body {
     animation: addToCartAnimation 0.3s ease;
 }
 
-/* Responsive Design */
+/* ===========================================
+   NUEVAS ANIMACIONES DEPORTIVAS
+   =========================================== */
+
+/* Animación del gradiente de fondo */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animación de burbujas flotantes */
+@keyframes floatBubbles {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translate(10px, -15px) rotate(90deg);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(-5px, -25px) rotate(180deg);
+        opacity: 0.2;
+    }
+    75% {
+        transform: translate(-15px, -10px) rotate(270deg);
+        opacity: 0.35;
+    }
+}
+
+/* Animación de ondas para contacto */
+@keyframes contactWave {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.05);
+        opacity: 0.5;
+    }
+}
+
+/* Animación de ondas para footer */
+@keyframes footerWave {
+    0%, 100% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 0.2;
+    }
+    33% {
+        transform: translateX(30px) rotate(120deg);
+        opacity: 0.3;
+    }
+    66% {
+        transform: translateX(-20px) rotate(240deg);
+        opacity: 0.25;
+    }
+}
+
+/* Animación de línea expansiva */
+@keyframes expandLine {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 30px;
+    }
+}
+
+/* Animación de entrada suave */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================================
+   ANIMACIONES PARA PRODUCT CONTROLS
+   =========================================== */
+
+/* Animación de partículas flotantes */
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translate(15px, -10px) rotate(90deg) scale(1.1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-10px, -20px) rotate(180deg) scale(0.9);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translate(-20px, -5px) rotate(270deg) scale(1.05);
+        opacity: 0.6;
+    }
+}
+
+/* Animación del gradiente superior */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* Animación de entrada desde abajo */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación de pulsación suave */
+@keyframes softPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(231, 76, 60, 0.2);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+    }
+}
+
+/* Aplicar pulsación al contenedor principal */
+.product-controls:hover {
+    animation: softPulse 2s ease-in-out infinite;
+}
+
+/* ===========================================
+   ANIMACIONES PARA PARTÍCULAS Y LOADING
+   =========================================== */
+
+/* Animación de partículas flotantes */
+@keyframes floatingParticles {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+        opacity: 0.3;
+    }
+    20% {
+        transform: translateY(-15px) translateX(10px) rotate(72deg) scale(1.1);
+        opacity: 0.5;
+    }
+    40% {
+        transform: translateY(-25px) translateX(-5px) rotate(144deg) scale(0.9);
+        opacity: 0.4;
+    }
+    60% {
+        transform: translateY(-20px) translateX(15px) rotate(216deg) scale(1.05);
+        opacity: 0.6;
+    }
+    80% {
+        transform: translateY(-10px) translateX(-10px) rotate(288deg) scale(0.95);
+        opacity: 0.45;
+    }
+}
+
+/* Animación de ondas */
+@keyframes waveMotion {
+    0%, 100% {
+        transform: translateX(0) translateY(0) skew(0deg);
+        opacity: 0.2;
+    }
+    25% {
+        transform: translateX(20px) translateY(-10px) skew(2deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(-15px) translateY(-20px) skew(-1deg);
+        opacity: 0.25;
+    }
+    75% {
+        transform: translateX(10px) translateY(-15px) skew(1.5deg);
+        opacity: 0.35;
+    }
+}
+
+/* Animación del spinner mejorada */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseSpinner {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(231, 76, 60, 0.3),
+            inset 0 0 20px rgba(231, 76, 60, 0.1);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(231, 76, 60, 0.5),
+            inset 0 0 30px rgba(231, 76, 60, 0.2);
+        transform: scale(1.05);
+    }
+}
+
+/* Animación del texto de loading */
+@keyframes textPulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+        color: #333;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
+        color: #e74c3c;
+    }
+}
+
+/* Animación de partículas para toda la sección */
+@keyframes sectionParticles {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.4;
+    }
+    25% {
+        transform: translate(30px, -20px) rotate(90deg);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(-20px, -40px) rotate(180deg);
+        opacity: 0.3;
+    }
+    75% {
+        transform: translate(-30px, -10px) rotate(270deg);
+        opacity: 0.7;
+    }
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN PARA CONTACT Y FOOTER
+   =========================================== */
+
+/* Responsive para sección de contacto */
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-item {
+        padding: 1rem;
+    }
+    
+    .newsletter-form {
+        padding: 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: 60px 0;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-item i {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .form-group {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+    
+    .form-group button {
+        border-radius: 0 0 15px 15px;
+    }
+    
+    .form-group input {
+        border-radius: 15px 15px 0 0;
+    }
+    
+    /* Product Controls Responsive */
+    .product-controls {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .sort-controls {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+    }
+    
+    .sort-select {
+        min-width: 100%;
+    }
+    
+    .view-controls {
+        justify-content: center;
+    }
+}
+
+/* Responsive Design Original */
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -648,6 +1372,423 @@ body {
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
+}
+
+/* ===========================================
+   PRODUCT CONTROLS STYLES - NUEVA SECCIÓN
+   =========================================== */
+
+/* Contenedor principal de controles */
+.product-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.8s ease;
+}
+
+/* Efecto de partículas animadas de fondo */
+.product-controls::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(231, 76, 60, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 60% 40%, rgba(46, 204, 113, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 30% 70%, rgba(155, 89, 182, 0.05) 0%, transparent 30%);
+    animation: particleFloat 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Gradiente decorativo superior */
+.product-controls::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #e74c3c, #3498db, #2ecc71, #9b59b6, #e74c3c);
+    background-size: 200% 100%;
+    animation: gradientMove 3s ease-in-out infinite;
+    z-index: 2;
+}
+
+.product-controls > * {
+    position: relative;
+    z-index: 3;
+}
+
+/* Controles de ordenamiento */
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sort-controls label {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.sort-select {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid rgba(231, 76, 60, 0.2);
+    border-radius: 12px;
+    background: white;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sort-select:hover {
+    border-color: #e74c3c;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
+    transform: translateY(-2px);
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* Controles de vista */
+.view-controls {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 0.5rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de onda al hacer click */
+.view-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(231, 76, 60, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.view-btn:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.view-btn:hover {
+    color: #e74c3c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+}
+
+.view-btn.active {
+    background: #e74c3c;
+    color: white;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+    transform: scale(1.05);
+}
+
+.view-btn.active:hover {
+    background: #c0392b;
+}
+
+/* Smart Search Container Styles */
+.smart-search-container {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.smart-search-input {
+    width: 100%;
+    padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+    border: 2px solid rgba(231, 76, 60, 0.2);
+    border-radius: 50px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.smart-search-input:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1), 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e74c3c;
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
+.clear-search {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(231, 76, 60, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color: #e74c3c;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-search:hover {
+    background: #e74c3c;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Load More Button Styles */
+.load-more-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.load-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.load-more-btn:hover::before {
+    left: 100%;
+}
+
+.load-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+}
+
+.load-more-btn i {
+    transition: transform 0.3s ease;
+}
+
+.load-more-btn:hover i {
+    transform: translateY(3px);
+}
+
+/* ===========================================
+   PRODUCTS LOADING STYLES CON ANIMACIONES
+   =========================================== */
+
+/* Contenedor principal del loading */
+.products-loading {
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgba(231, 76, 60, 0.05) 0%, 
+        rgba(52, 152, 219, 0.05) 25%, 
+        rgba(46, 204, 113, 0.05) 50%, 
+        rgba(155, 89, 182, 0.05) 75%, 
+        rgba(231, 76, 60, 0.05) 100%);
+    border-radius: 20px;
+    margin: 2rem 0;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(231, 76, 60, 0.1);
+}
+
+/* Partículas flotantes de fondo */
+.products-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* Partículas grandes */
+        radial-gradient(circle at 10% 20%, rgba(231, 76, 60, 0.15) 0%, transparent 20%),
+        radial-gradient(circle at 80% 30%, rgba(52, 152, 219, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 40% 70%, rgba(46, 204, 113, 0.15) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.15) 0%, transparent 15%),
+        /* Partículas medianas */
+        radial-gradient(circle at 30% 10%, rgba(231, 76, 60, 0.1) 0%, transparent 10%),
+        radial-gradient(circle at 70% 60%, rgba(52, 152, 219, 0.1) 0%, transparent 12%),
+        radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.1) 0%, transparent 8%),
+        /* Partículas pequeñas */
+        radial-gradient(circle at 60% 20%, rgba(155, 89, 182, 0.08) 0%, transparent 6%),
+        radial-gradient(circle at 15% 60%, rgba(231, 76, 60, 0.08) 0%, transparent 5%),
+        radial-gradient(circle at 85% 40%, rgba(52, 152, 219, 0.08) 0%, transparent 7%);
+    animation: floatingParticles 15s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Ondas de fondo */
+.products-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, transparent 40%, rgba(231, 76, 60, 0.03) 50%, transparent 60%),
+        linear-gradient(-45deg, transparent 40%, rgba(52, 152, 219, 0.03) 50%, transparent 60%);
+    animation: waveMotion 8s ease-in-out infinite;
+    z-index: 2;
+}
+
+/* Contenido del loading por encima de las animaciones */
+.products-loading > * {
+    position: relative;
+    z-index: 3;
+}
+
+/* Spinner mejorado */
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 2rem;
+    border: 4px solid rgba(231, 76, 60, 0.2);
+    border-top: 4px solid #e74c3c;
+    border-radius: 50%;
+    animation: spin 1s linear infinite, pulseSpinner 2s ease-in-out infinite;
+    box-shadow: 
+        0 0 20px rgba(231, 76, 60, 0.3),
+        inset 0 0 20px rgba(231, 76, 60, 0.1);
+}
+
+/* Texto del loading */
+.products-loading p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    animation: textPulse 3s ease-in-out infinite;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para products-grid con fondo animado */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Fondo animado para la sección de productos */
+.products {
+    position: relative;
+    overflow: hidden;
+}
+
+.products::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* Partículas deportivas grandes */
+        radial-gradient(circle at 5% 15%, rgba(231, 76, 60, 0.03) 0%, transparent 25%),
+        radial-gradient(circle at 95% 25%, rgba(52, 152, 219, 0.03) 0%, transparent 30%),
+        radial-gradient(circle at 25% 85%, rgba(46, 204, 113, 0.03) 0%, transparent 25%),
+        radial-gradient(circle at 85% 85%, rgba(155, 89, 182, 0.03) 0%, transparent 20%),
+        /* Partículas medianas */
+        radial-gradient(circle at 45% 35%, rgba(231, 76, 60, 0.02) 0%, transparent 15%),
+        radial-gradient(circle at 75% 65%, rgba(52, 152, 219, 0.02) 0%, transparent 18%),
+        radial-gradient(circle at 15% 45%, rgba(46, 204, 113, 0.02) 0%, transparent 12%),
+        /* Micro partículas */
+        radial-gradient(circle at 35% 75%, rgba(155, 89, 182, 0.015) 0%, transparent 8%),
+        radial-gradient(circle at 65% 25%, rgba(231, 76, 60, 0.015) 0%, transparent 10%),
+        radial-gradient(circle at 55% 55%, rgba(52, 152, 219, 0.015) 0%, transparent 6%);
+    animation: sectionParticles 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.products .container {
+    position: relative;
+    z-index: 2;
 }
 
 /* Loading Animation for Product Cards */
