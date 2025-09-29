@@ -1848,17 +1848,15 @@ html {
 .products {
     position: relative;
     background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 1) 0%,
-        rgba(248, 249, 250, 0.98) 25%,
+        rgb(215, 8, 8) 0%,
+        rgba(55, 138, 221, 0.98) 25%,
         rgba(231, 76, 60, 0.02) 50%,
-        rgba(248, 249, 250, 0.98) 75%,
-        rgba(255, 255, 255, 1) 100%);
+        rgba(212, 61, 6, 0.98) 75%,
+        rgba(55, 138, 221, 0.98) 100%);
     background-size: 200% 200%;
     animation: backgroundShift 12s ease-in-out infinite;
 }
-
-/* Fondo animado para la sección de productos - SIMPLIFICADO */
-.about {
+.faq {
     position: relative;
     background: linear-gradient(135deg, 
         rgb(215, 8, 8) 0%,
@@ -1866,6 +1864,41 @@ html {
         rgba(231, 76, 60, 0.02) 50%,
         rgba(212, 61, 6, 0.98) 75%,
         rgba(55, 138, 221, 0.98) 100%);
+    background-size: 200% 200%;
+    animation: backgroundShift 12s ease-in-out infinite;
+}
+.mapa .ubicacion {
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgb(215, 8, 8) 0%,
+        rgba(55, 138, 221, 0.98) 25%,
+        rgba(231, 76, 60, 0.02) 50%,
+        rgba(212, 61, 6, 0.98) 75%,
+        rgba(55, 138, 221, 0.98) 100%);
+    background-size: 200% 200%;
+    animation: backgroundShift 12s ease-in-out infinite;
+}
+.reviews {
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgb(215, 8, 8) 0%,
+        rgba(55, 138, 221, 0.98) 25%,
+        rgba(231, 76, 60, 0.02) 50%,
+        rgba(212, 61, 6, 0.98) 75%,
+        rgba(55, 138, 221, 0.98) 100%);
+    background-size: 200% 200%;
+    animation: backgroundShift 12s ease-in-out infinite;
+}
+/* Fondo animado para la sección about - SIMPLIFICADO */
+.about {
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgba(55, 138, 221, 0.98) 0%,
+        rgba(212, 61, 6, 0.98) 25%,
+        rgba(231, 76, 60, 0.02) 50%,
+        rgba(212, 61, 6, 0.98) 75%,
+        rgba(0, 127, 253, 0.98) 100%);
+
     background-size: 200% 200%;
     animation: backgroundShift 12s ease-in-out infinite;
 }
@@ -2019,11 +2052,11 @@ html {
 
 /* Paleta: toma colores existentes si están definidos en tu CSS */
 :root {
-  --c1: var(--primary, var(--primary-color, #14b8a6));  /* Teal */
-  --c2: var(--secondary, var(--secondary-color, #22c55e)); /* Green */
-  --c3: var(--accent, var(--accent-color, #f59e0b));   /* Amber/Orange */
-  --c4: var(--info, var(--info-color, #3b82f6));       /* Blue */
-  --c5: var(--warning, var(--warning-color, #eab308)); /* Yellow */
+  --c1: var(--primary, var(--primary-color, #000000));  /* Teal */
+  --c2: var(--secondary, var(--secondary-color, #ff0000)); /* Green */
+  --c3: var(--accent, var(--accent-color, #fa1505));   /* Amber/Orange */
+  --c4: var(--info, var(--info-color, #021fff));       /* Blue */
+  --c5: var(--warning, var(--warning-color, #000000)); /* Yellow */
 }
 
 /* Asegura apilamiento correcto: contenido por encima del fondo animado */
