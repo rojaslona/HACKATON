@@ -663,3 +663,143 @@ html {
         transform: translateY(0);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Logo */
+.logo-img {
+    width: 80px;          
+    height: 80px;          
+    border-radius: 25%;   
+    object-fit: contain; 
+    display: block;       
+}
+
+/* Mapa */
+.map-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; 
+    
+
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
