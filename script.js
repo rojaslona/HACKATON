@@ -5,44 +5,44 @@ class SportStore {
         this.products = [
             {
                 id: 1,
-                name: "Professional Running Shoes",
+                name: "Zapatillas de Running Profesionales",
                 price: 149.99,
-                description: "High-performance running shoes with advanced cushioning technology.",
+                description: "Zapatillas de alto rendimiento con tecnología avanzada de amortiguación.",
                 icon: "fas fa-running"
             },
             {
                 id: 2,
-                name: "Premium Gym Equipment Set",
+                name: "Set de Equipamiento de Gimnasio Premium",
                 price: 299.99,
-                description: "Complete home gym setup with dumbbells, resistance bands, and more.",
+                description: "Gimnasio completo en casa con mancuernas, bandas de resistencia y más.",
                 icon: "fas fa-dumbbell"
             },
             {
                 id: 3,
-                name: "Professional Soccer Ball",
+                name: "Balón de Fútbol Profesional",
                 price: 49.99,
-                description: "FIFA-approved soccer ball used by professional players worldwide.",
+                description: "Balón de fútbol aprobado por la FIFA, usado por jugadores profesionales en todo el mundo.",
                 icon: "fas fa-futbol"
             },
             {
                 id: 4,
-                name: "Basketball Shoes",
+                name: "Zapatillas de Baloncesto",
                 price: 179.99,
-                description: "High-top basketball shoes with superior ankle support and grip.",
+                description: "Zapatillas de baloncesto de caña alta con excelente soporte y agarre.",
                 icon: "fas fa-basketball-ball"
             },
             {
                 id: 5,
-                name: "Tennis Racket Pro",
+                name: "Raqueta de Tenis Pro",
                 price: 199.99,
-                description: "Professional-grade tennis racket with carbon fiber construction.",
+                description: "Raqueta de tenis profesional con construcción de fibra de carbono.",
                 icon: "fas fa-table-tennis"
             },
             {
                 id: 6,
-                name: "Yoga Mat & Accessories",
+                name: "Esterilla de Yoga y Accesorios",
                 price: 79.99,
-                description: "Premium yoga mat with carrying strap and meditation accessories.",
+                description: "Esterilla de yoga premium con correa y accesorios para meditación.",
                 icon: "fas fa-spa"
             }
         ];
@@ -81,7 +81,7 @@ class SportStore {
             <p class="product-description">${product.description}</p>
             <div class="product-price">$${product.price.toFixed(2)}</div>
             <button class="add-to-cart-btn" data-product-id="${product.id}">
-                Add to Cart
+                Añadir al carrito
             </button>
         `;
 
@@ -158,7 +158,7 @@ class SportStore {
             cartItems.innerHTML = `
                 <div class="empty-cart">
                     <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                    <p>Your cart is empty</p>
+                    <p>Tu carrito está vacío</p>
                 </div>
             `;
             return;
@@ -240,7 +240,7 @@ class SportStore {
     showCartNotification() {
         // Create notification element
         const notification = document.createElement('div');
-        notification.textContent = 'Item added to cart!';
+        notification.textContent = '¡Producto añadido al carrito!';
         notification.style.cssText = `
             position: fixed;
             top: 100px;
