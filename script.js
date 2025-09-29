@@ -1,4 +1,3 @@
-// Sports Store Landing Page JavaScript
 class SportStore {
     constructor() {
         this.cart = this.loadCartFromStorage();
@@ -8,111 +7,175 @@ class SportStore {
                 name: "Zapatillas de Running Profesionales",
                 price: 149.99,
                 description: "Zapatillas de alto rendimiento con tecnología avanzada de amortiguación.",
-                icon: "fas fa-running"
+                icon: "fas fa-running",
+                stock: 15,
+                rating: 4.8
             },
             {
                 id: 2,
                 name: "Set de Equipamiento de Gimnasio Premium",
                 price: 299.99,
                 description: "Gimnasio completo en casa con mancuernas, bandas de resistencia y más.",
-                icon: "fas fa-dumbbell"
+                icon: "fas fa-dumbbell",
+                stock: 8,
+                rating: 4.9
             },
             {
                 id: 3,
                 name: "Balón de Fútbol Profesional",
                 price: 49.99,
                 description: "Balón de fútbol aprobado por la FIFA, usado por jugadores profesionales en todo el mundo.",
-                icon: "fas fa-futbol"
+                icon: "fas fa-futbol",
+                stock: 25,
+                rating: 4.7
             },
             {
                 id: 4,
                 name: "Zapatillas de Baloncesto",
                 price: 179.99,
                 description: "Zapatillas de baloncesto de caña alta con excelente soporte y agarre.",
-                icon: "fas fa-basketball-ball"
+                icon: "fas fa-basketball-ball",
+                stock: 12,
+                rating: 4.6
             },
             {
                 id: 5,
                 name: "Raqueta de Tenis Pro",
                 price: 199.99,
                 description: "Raqueta de tenis profesional con construcción de fibra de carbono.",
-                icon: "fas fa-table-tennis"
+                icon: "fas fa-table-tennis",
+                stock: 6,
+                rating: 4.8
             },
             {
                 id: 6,
                 name: "Esterilla de Yoga y Accesorios",
                 price: 79.99,
                 description: "Esterilla de yoga premium con correa y accesorios para meditación.",
-                icon: "fas fa-spa"
+                icon: "fas fa-spa",
+                stock: 20,
+                rating: 4.5
             }
         ];
+        
         this.init();
     }
 
     init() {
+        console.log('Inicializando SportZone...');
+        
+        // Render products immediately (no loading state)
         this.renderProducts();
         this.updateCartDisplay();
         this.setupEventListeners();
         this.setupNavigation();
-        this.animateOnScroll();
+        
+        console.log('SportZone inicializado correctamente');
     }
 
-    // Product Rendering
     renderProducts() {
         const productsGrid = document.getElementById('productsGrid');
-        productsGrid.innerHTML = '';
+        
+        if (!productsGrid) {
+            console.error('Elemento productsGrid no encontrado');
+            return;
+        }
 
+        console.log('Renderizando productos...');
+        
+        // Clear any loading states
+        productsGrid.innerHTML = '';
+        
+        // Render products directly
         this.products.forEach((product, index) => {
             const productCard = this.createProductCard(product);
             productCard.style.animationDelay = `${index * 0.1}s`;
-            productCard.classList.add('loading');
             productsGrid.appendChild(productCard);
         });
+        
+        console.log('Productos renderizados:', this.products.length);
     }
 
     createProductCard(product) {
         const card = document.createElement('div');
         card.className = 'product-card';
+        
         card.innerHTML = `
             <div class="product-image">
                 <i class="${product.icon}"></i>
+                ${product.stock < 10 ? '<span class="low-stock-badge">¡Pocas unidades!</span>' : ''}
             </div>
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <div class="product-price">$${product.price.toFixed(2)}</div>
-            <button class="add-to-cart-btn" data-product-id="${product.id}">
-                Añadir al carrito
-            </button>
+            <div class="product-content">
+                <h3 class="product-name">${product.name}</h3>
+                <div class="product-rating">
+                    ${this.generateStarRating(product.rating)}
+                    <span class="rating-text">(${product.rating})</span>
+                </div>
+                <p class="product-description">${product.description}</p>
+                <div class="product-footer">
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="product-stock">${this.getStockText(product.stock)}</div>
+                </div>
+                <button 
+                    class="add-to-cart-btn ${product.stock === 0 ? 'disabled' : ''}" 
+                    data-product-id="${product.id}"
+                    ${product.stock === 0 ? 'disabled' : ''}
+                >
+                    <span class="btn-text">
+                        ${product.stock === 0 ? 'Agotado' : 'Añadir al carrito'}
+                    </span>
+                    <i class="fas fa-shopping-cart btn-icon"></i>
+                </button>
+            </div>
         `;
-
-        // Add hover animations
-        card.addEventListener('mouseenter', () => {
-            this.animateProductCard(card, 'hover');
-        });
-
-        card.addEventListener('mouseleave', () => {
-            this.animateProductCard(card, 'unhover');
-        });
 
         return card;
     }
 
-    animateProductCard(card, action) {
-        const image = card.querySelector('.product-image');
-        if (action === 'hover') {
-            image.style.transform = 'scale(1.1) rotate(5deg)';
-        } else {
-            image.style.transform = 'scale(1) rotate(0deg)';
+    generateStarRating(rating) {
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 >= 0.5;
+        let starsHTML = '';
+        
+        for (let i = 0; i < 5; i++) {
+            if (i < fullStars) {
+                starsHTML += '<i class="fas fa-star"></i>';
+            } else if (i === fullStars && hasHalfStar) {
+                starsHTML += '<i class="fas fa-star-half-alt"></i>';
+            } else {
+                starsHTML += '<i class="far fa-star"></i>';
+            }
         }
+        
+        return `<div class="stars">${starsHTML}</div>`;
     }
 
-    // Cart Functionality
+    getStockText(stock) {
+        if (stock === 0) return '<span class="out-of-stock">Sin stock</span>';
+        if (stock < 5) return `<span class="low-stock">Solo ${stock} disponibles</span>`;
+        return `<span class="in-stock">${stock} disponibles</span>`;
+    }
+
     addToCart(productId) {
+        console.log('Añadiendo al carrito:', productId);
+        
         const product = this.products.find(p => p.id === parseInt(productId));
-        if (!product) return;
+        if (!product) {
+            console.error('Producto no encontrado:', productId);
+            return;
+        }
+
+        if (product.stock === 0) {
+            this.showNotification('Este producto está agotado', 'error');
+            return;
+        }
 
         const existingItem = this.cart.find(item => item.id === product.id);
         if (existingItem) {
+            if (existingItem.quantity >= product.stock) {
+                this.showNotification('No hay suficiente stock disponible', 'error');
+                return;
+            }
             existingItem.quantity += 1;
         } else {
             this.cart.push({ ...product, quantity: 1 });
@@ -120,132 +183,114 @@ class SportStore {
 
         this.saveCartToStorage();
         this.updateCartDisplay();
-        this.animateAddToCart(productId);
-        this.showCartNotification();
+        this.showNotification('Producto añadido al carrito', 'success');
     }
 
     removeFromCart(productId) {
+        console.log('Eliminando del carrito:', productId);
+        
         this.cart = this.cart.filter(item => item.id !== parseInt(productId));
         this.saveCartToStorage();
         this.updateCartDisplay();
         this.renderCartItems();
+        this.showNotification('Producto eliminado del carrito', 'success');
     }
 
     updateCartDisplay() {
         const cartCount = document.getElementById('cartCount');
-        const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartCount.textContent = totalItems;
+        const cartTotal = document.getElementById('cartTotal');
         
-        if (totalItems > 0) {
-            cartCount.style.display = 'flex';
-        } else {
-            cartCount.style.display = 'none';
+        if (cartCount) {
+            const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            if (totalItems > 0) {
+                cartCount.style.display = 'flex';
+            } else {
+                cartCount.style.display = 'none';
+            }
         }
 
-        this.updateCartTotal();
-    }
-
-    updateCartTotal() {
-        const cartTotal = document.getElementById('cartTotal');
-        const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        cartTotal.textContent = total.toFixed(2);
+        if (cartTotal) {
+            const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = total.toFixed(2);
+        }
     }
 
     renderCartItems() {
         const cartItems = document.getElementById('cartItems');
+        if (!cartItems) return;
         
         if (this.cart.length === 0) {
             cartItems.innerHTML = `
                 <div class="empty-cart">
-                    <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                    <p>Tu carrito está vacío</p>
+                    <div class="empty-cart-animation">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Tu carrito está vacío</h3>
+                    <p>¡Descubre nuestros increíbles productos deportivos!</p>
+                    <button class="continue-shopping-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+                        Seguir comprando
+                    </button>
                 </div>
             `;
             return;
         }
 
         cartItems.innerHTML = '';
-        this.cart.forEach(item => {
-            const cartItem = document.createElement('div');
-            cartItem.className = 'cart-item';
-            cartItem.innerHTML = `
-                <div class="cart-item-image">
-                    <i class="${item.icon}"></i>
-                </div>
-                <div class="cart-item-info">
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-price">$${item.price.toFixed(2)} x ${item.quantity}</div>
-                </div>
-                <button class="remove-item" data-product-id="${item.id}">
-                    <i class="fas fa-trash"></i>
-                </button>
-            `;
+        this.cart.forEach((item, index) => {
+            const cartItem = this.createCartItem(item);
             cartItems.appendChild(cartItem);
         });
     }
 
-    // Cart Animations
-    animateAddToCart(productId) {
-        const productCard = document.querySelector(`[data-product-id="${productId}"]`).closest('.product-card');
-        const cartBtn = document.getElementById('cartBtn');
+    createCartItem(item) {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
         
-        // Animate product card
-        productCard.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            productCard.style.transform = 'scale(1)';
-        }, 150);
-
-        // Animate cart button
-        cartBtn.classList.add('cart-animation');
-        setTimeout(() => {
-            cartBtn.classList.remove('cart-animation');
-        }, 300);
-
-        // Create flying animation
-        this.createFlyingAnimation(productCard, cartBtn);
-    }
-
-    createFlyingAnimation(fromElement, toElement) {
-        const flyingIcon = document.createElement('div');
-        flyingIcon.innerHTML = '<i class="fas fa-plus"></i>';
-        flyingIcon.style.cssText = `
-            position: fixed;
-            z-index: 9999;
-            font-size: 1.5rem;
-            color: #e74c3c;
-            pointer-events: none;
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cartItem.innerHTML = `
+            <div class="cart-item-image">
+                <i class="${item.icon}"></i>
+            </div>
+            <div class="cart-item-info">
+                <div class="cart-item-name">${item.name}</div>
+                <div class="cart-item-details">
+                    <span class="cart-item-price">$${item.price.toFixed(2)}</span>
+                    <div class="quantity-controls">
+                        <button class="qty-btn minus" data-product-id="${item.id}" data-action="decrease">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="quantity">${item.quantity}</span>
+                        <button class="qty-btn plus" data-product-id="${item.id}" data-action="increase">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="cart-item-total">
+                    Subtotal: $${(item.price * item.quantity).toFixed(2)}
+                </div>
+            </div>
+            <button class="remove-item" data-product-id="${item.id}">
+                <i class="fas fa-trash"></i>
+            </button>
         `;
-
-        const fromRect = fromElement.getBoundingClientRect();
-        const toRect = toElement.getBoundingClientRect();
-
-        flyingIcon.style.left = fromRect.left + fromRect.width / 2 + 'px';
-        flyingIcon.style.top = fromRect.top + fromRect.height / 2 + 'px';
-
-        document.body.appendChild(flyingIcon);
-
-        requestAnimationFrame(() => {
-            flyingIcon.style.left = toRect.left + toRect.width / 2 + 'px';
-            flyingIcon.style.top = toRect.top + toRect.height / 2 + 'px';
-            flyingIcon.style.opacity = '0';
-            flyingIcon.style.transform = 'scale(0.3)';
-        });
-
-        setTimeout(() => {
-            document.body.removeChild(flyingIcon);
-        }, 800);
+        
+        return cartItem;
     }
 
-    showCartNotification() {
-        // Create notification element
+    showNotification(message, type = 'success') {
         const notification = document.createElement('div');
-        notification.textContent = '¡Producto añadido al carrito!';
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+            <span>${message}</span>
+        `;
+        
         notification.style.cssText = `
             position: fixed;
             top: 100px;
             right: 20px;
-            background: #e74c3c;
+            background: ${type === 'success' ? '#2ecc71' : '#e74c3c'};
             color: white;
             padding: 1rem 1.5rem;
             border-radius: 8px;
@@ -253,116 +298,168 @@ class SportStore {
             transform: translateX(100%);
             transition: transform 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 300px;
         `;
 
         document.body.appendChild(notification);
 
-        // Animate in
         requestAnimationFrame(() => {
             notification.style.transform = 'translateX(0)';
         });
 
-        // Animate out and remove
         setTimeout(() => {
             notification.style.transform = 'translateX(100%)';
             setTimeout(() => {
-                document.body.removeChild(notification);
+                if (document.body.contains(notification)) {
+                    document.body.removeChild(notification);
+                }
             }, 300);
-        }, 2000);
+        }, 3000);
     }
 
-    // Storage Functions
     saveCartToStorage() {
-        localStorage.setItem('sportstore-cart', JSON.stringify(this.cart));
+        try {
+            localStorage.setItem('sportzone-cart', JSON.stringify(this.cart));
+        } catch (error) {
+            console.error('Error saving cart:', error);
+        }
     }
 
     loadCartFromStorage() {
-        const saved = localStorage.getItem('sportstore-cart');
-        return saved ? JSON.parse(saved) : [];
+        try {
+            const saved = localStorage.getItem('sportzone-cart');
+            return saved ? JSON.parse(saved) : [];
+        } catch (error) {
+            console.error('Error loading cart:', error);
+            return [];
+        }
     }
 
-    // Event Listeners
     setupEventListeners() {
-        // Add to cart buttons
+        // Event delegation for clicks
         document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('add-to-cart-btn')) {
-                const productId = e.target.getAttribute('data-product-id');
-                this.addToCart(productId);
+            if (e.target.classList.contains('add-to-cart-btn') || e.target.closest('.add-to-cart-btn')) {
+                const button = e.target.classList.contains('add-to-cart-btn') ? e.target : e.target.closest('.add-to-cart-btn');
+                const productId = button.getAttribute('data-product-id');
+                if (productId && !button.disabled) {
+                    this.addToCart(productId);
+                }
             }
 
-            // Remove from cart buttons
-            if (e.target.closest('.remove-item')) {
-                const productId = e.target.closest('.remove-item').getAttribute('data-product-id');
-                this.removeFromCart(productId);
+            if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
+                const productId = button.getAttribute('data-product-id');
+                if (productId) {
+                    this.removeFromCart(productId);
+                }
+            }
+
+            if (e.target.classList.contains('qty-btn') || e.target.closest('.qty-btn')) {
+                const button = e.target.classList.contains('qty-btn') ? e.target : e.target.closest('.qty-btn');
+                const productId = button.getAttribute('data-product-id');
+                const action = button.getAttribute('data-action');
+                if (productId && action) {
+                    this.updateCartQuantity(productId, action);
+                }
             }
         });
 
-        // Cart sidebar toggle
+        // Cart sidebar
         const cartBtn = document.getElementById('cartBtn');
-        const cartSidebar = document.getElementById('cartSidebar');
-        const cartOverlay = document.getElementById('cartOverlay');
         const closeCart = document.getElementById('closeCart');
+        const cartOverlay = document.getElementById('cartOverlay');
 
-        cartBtn.addEventListener('click', () => {
-            this.openCart();
-        });
+        if (cartBtn) {
+            cartBtn.addEventListener('click', () => this.openCart());
+        }
 
-        closeCart.addEventListener('click', () => {
-            this.closeCart();
-        });
+        if (closeCart) {
+            closeCart.addEventListener('click', () => this.closeCart());
+        }
 
-        cartOverlay.addEventListener('click', () => {
-            this.closeCart();
-        });
+        if (cartOverlay) {
+            cartOverlay.addEventListener('click', () => this.closeCart());
+        }
 
-        // CTA button scroll to products
+        // CTA button
         const ctaButton = document.querySelector('.cta-button');
-        ctaButton.addEventListener('click', () => {
-            document.getElementById('products').scrollIntoView({
-                behavior: 'smooth'
+        if (ctaButton) {
+            ctaButton.addEventListener('click', () => {
+                document.getElementById('products').scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
-        });
+        }
+    }
+
+    updateCartQuantity(productId, action) {
+        const item = this.cart.find(item => item.id === parseInt(productId));
+        if (!item) return;
+
+        if (action === 'increase') {
+            item.quantity += 1;
+        } else if (action === 'decrease') {
+            if (item.quantity > 1) {
+                item.quantity -= 1;
+            } else {
+                this.removeFromCart(productId);
+                return;
+            }
+        }
+
+        this.saveCartToStorage();
+        this.updateCartDisplay();
+        this.renderCartItems();
     }
 
     openCart() {
         const cartSidebar = document.getElementById('cartSidebar');
         const cartOverlay = document.getElementById('cartOverlay');
         
-        cartSidebar.classList.add('open');
-        cartOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        this.renderCartItems();
+        if (cartSidebar && cartOverlay) {
+            cartSidebar.classList.add('open');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            this.renderCartItems();
+        }
     }
 
     closeCart() {
         const cartSidebar = document.getElementById('cartSidebar');
         const cartOverlay = document.getElementById('cartOverlay');
         
-        cartSidebar.classList.remove('open');
-        cartOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        if (cartSidebar && cartOverlay) {
+            cartSidebar.classList.remove('open');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     }
 
-    // Navigation
     setupNavigation() {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
 
         // Close mobile menu when clicking nav links
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                if (hamburger && navMenu) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
             });
         });
 
-        // Smooth scroll for navigation links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -376,122 +473,15 @@ class SportStore {
             });
         });
     }
-
-    // Scroll Animations
-    animateOnScroll() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for scroll animation
-        document.querySelectorAll('.feature-card, .product-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    }
-
-    // Header scroll effect
-    setupHeaderScroll() {
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-    }
 }
 
-// Initialize the application when DOM is loaded
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    const store = new SportStore();
-    
-    // Setup header scroll effect
-    store.setupHeaderScroll();
-    
-    // Add loading animation to page
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// Add some utility functions for enhanced UX
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Enhanced scroll to top functionality
-window.addEventListener('scroll', debounce(() => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const header = document.querySelector('.header');
-    
-    if (scrollTop > 300) {
-        if (!document.querySelector('.scroll-to-top')) {
-            const scrollBtn = document.createElement('button');
-            scrollBtn.className = 'scroll-to-top';
-            scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-            scrollBtn.style.cssText = `
-                position: fixed;
-                bottom: 30px;
-                right: 30px;
-                width: 50px;
-                height: 50px;
-                background: #e74c3c;
-                color: white;
-                border: none;
-                border-radius: 50%;
-                cursor: pointer;
-                z-index: 1000;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            `;
-            
-            scrollBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            scrollBtn.addEventListener('mouseenter', () => {
-                scrollBtn.style.transform = 'scale(1.1)';
-                scrollBtn.style.background = '#c0392b';
-            });
-            
-            scrollBtn.addEventListener('mouseleave', () => {
-                scrollBtn.style.transform = 'scale(1)';
-                scrollBtn.style.background = '#e74c3c';
-            });
-            
-            document.body.appendChild(scrollBtn);
-        }
-    } else {
-        const scrollBtn = document.querySelector('.scroll-to-top');
-        if (scrollBtn) {
-            scrollBtn.remove();
-        }
+    try {
+        console.log('Inicializando SportZone...');
+        window.store = new SportStore();
+        console.log('SportZone inicializado exitosamente!');
+    } catch (error) {
+        console.error('Error inicializando SportZone:', error);
     }
-}, 100));
+});
