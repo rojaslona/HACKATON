@@ -40,13 +40,13 @@ Esta *landing page* incluye las siguientes secciones y funcionalidades:
 ---
 
 ## 📂 Estructura de Archivos
-/
+```
 ├── index.html      # Estructura principal de la landing page
 ├── script.js       # Lógica de la aplicación (productos, carrito, etc.)
 ├── styles.css      # Estilos, diseño responsivo y animaciones
 ├── images/         # Carpeta para las imágenes de productos y logo
 └── README.md
-
+```
 ## 🖥️ Cómo Empezar
 
 Para ejecutar el proyecto localmente:

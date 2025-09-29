@@ -1172,6 +1172,49 @@ body::before {
 }
 
 /* ===========================================
+   ANIMATION KEYFRAMES - LOCATION SECTION
+   =========================================== */
+
+/* Animación de flotación para el fondo de ubicación */
+@keyframes locationFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(-10px, -20px) scale(1.02);
+    }
+    50% {
+        transform: translate(15px, -10px) scale(0.98);
+    }
+    75% {
+        transform: translate(-5px, 10px) scale(1.01);
+    }
+}
+
+/* Animación de flotación para el mapa */
+@keyframes mapFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Animación del borde degradado */
+@keyframes gradientBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ===========================================
    ANIMACIONES PARA PRODUCT CONTROLS
    =========================================== */
 
@@ -1434,6 +1477,24 @@ body::before {
     .section-title {
         font-size: 2rem;
     }
+    
+    /* Location tablet responsive */
+    .location .section-title {
+        font-size: 2.5rem;
+    }
+
+    .map-container {
+        padding-top: 55%;
+    }
+
+    .location-info {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.8rem;
+    }
+
+    .location-card {
+        padding: 1.8rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1474,6 +1535,48 @@ body::before {
 
     .feature-card h3 {
         font-size: 1.3rem;
+    }
+    
+    /* Location responsive */
+    .location .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .map-container {
+        padding-top: 60%;
+        border-radius: 15px;
+    }
+
+    .map-container::before {
+        border-radius: 17px;
+    }
+
+    .map-container iframe {
+        border-radius: 12px;
+    }
+
+    .location-info {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .location-card {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+
+    .location-card i {
+        font-size: 2rem;
+    }
+
+    .location-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .location-card p {
+        font-size: 0.95rem;
     }
 
     .feature-card p {
@@ -1930,16 +2033,101 @@ html {
     display: block;       
 }
 
-/* Mapa */
+/* ===========================================
+   LOCATION SECTION STYLES - MEJORADO
+   =========================================== */
+
+/* Sección de ubicación */
+.location {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo con partículas sutiles */
+.location::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(231, 76, 60, 0.04) 0%, transparent 30%),
+        radial-gradient(circle at 85% 30%, rgba(52, 152, 219, 0.04) 0%, transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(46, 204, 113, 0.04) 0%, transparent 25%),
+        radial-gradient(circle at 25% 70%, rgba(155, 89, 182, 0.04) 0%, transparent 20%);
+    animation: locationFloat 20s ease-in-out infinite;
+    z-index: 1;
+}
+
+.location .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Título de la sección */
+.location .section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.location .section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #e74c3c, #3498db);
+    border-radius: 2px;
+}
+
+/* Contenedor del mapa mejorado */
 .map-container {
     position: relative;
     overflow: hidden;
-    padding-top: 56.25%; 
-    
+    padding-top: 50%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 25px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 10px 25px rgba(0, 0, 0, 0.1);
+    background: white;
+    border: 3px solid rgba(231, 76, 60, 0.1);
+    transition: all 0.3s ease;
+    animation: mapFloat 6s ease-in-out infinite;
+}
 
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+.map-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.2),
+        0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto de brillo en el borde del mapa */
+.map-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #e74c3c, #3498db, #2ecc71, #9b59b6, #e74c3c);
+    background-size: 300% 300%;
+    border-radius: 27px;
+    z-index: -1;
+    animation: gradientBorder 4s ease infinite;
+    opacity: 0.6;
 }
 
 .map-container iframe {
@@ -1948,6 +2136,62 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
+    border: none;
+    border-radius: 22px;
+    filter: grayscale(20%) contrast(1.1);
+    transition: all 0.3s ease;
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0%) contrast(1.2);
+    transform: scale(1.02);
+}
+
+/* Información adicional debajo del mapa */
+.location-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+.location-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(231, 76, 60, 0.1);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.location-card i {
+    font-size: 2.5rem;
+    color: #e74c3c;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
+}
+
+.location-card h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.8rem;
+}
+
+.location-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
 }
 
 /* Desaturar y ajustar opacidad de imágenes de productos por defecto */
