@@ -4,39 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SportZone - Equipamiento Deportivo Premium</title>
+    <meta name="description" content="Descubre el mejor equipamiento deportivo premium para elevar tu rendimiento. Zapatillas, equipos de gimnasio y más.">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Preload critical resources for better performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
 </head>
 <body>
     <!-- Header Navigation -->
-    <header class="header">
-        <nav class="navbar">
+    <header class="header" role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <i class="fas fa-dumbbell"></i>
+                    <i class="fas fa-dumbbell" aria-hidden="true"></i>
                     <span>SportZone</span>
                 </div>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link">Inicio</a>
+                <ul class="nav-menu" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="#home" class="nav-link" role="menuitem">Inicio</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#products" class="nav-link">Productos</a>
+                    <li class="nav-item" role="none">
+                        <a href="#products" class="nav-link" role="menuitem">Productos</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">Sobre Nosotros</a>
+                    <li class="nav-item" role="none">
+                        <a href="#about" class="nav-link" role="menuitem">Sobre Nosotros</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Contacto</a>
+                    <li class="nav-item" role="none">
+                        <a href="#contact" class="nav-link" role="menuitem">Contacto</a>
                     </li>
                 </ul>
                 <div class="cart-container">
-                    <button class="cart-btn" id="cartBtn">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count" id="cartCount">0</span>
+                    <button class="cart-btn" id="cartBtn" aria-label="Abrir carrito de compras">
+                        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                        <span class="cart-count" id="cartCount" aria-live="polite">0</span>
                     </button>
                 </div>
-                <div class="hamburger">
+                <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -46,90 +51,297 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" role="banner">
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">Eleva Tu Juego</h1>
                 <p class="hero-subtitle">Equipamiento deportivo premium para campeones. Descubre el equipo que llevará tu rendimiento al siguiente nivel.</p>
-                <button class="cta-button">Comprar Ahora</button>
+                <button class="cta-button" aria-label="Ir a productos destacados">
+                    <span>Comprar Ahora</span>
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </button>
             </div>
             <div class="hero-image">
                 <div class="hero-graphic">
-                    <i class="fas fa-running"></i>
+                    <i class="fas fa-running" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="products">
+    <section id="products" class="products" role="main">
         <div class="container">
             <h2 class="section-title">Productos Destacados</h2>
-            <div class="products-grid" id="productsGrid">
+            
+            <!-- Smart Search Container - NUEVA FUNCIONALIDAD -->
+            <div class="smart-search-container" role="search">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                    <input type="text" 
+                           id="smartSearchInput"
+                           class="smart-search-input" 
+                           placeholder="Buscar productos... (prueba 'zapatilla' o 'balón')"
+                           aria-label="Buscar productos">
+                    <button class="clear-search" id="clearSearch" aria-label="Limpiar búsqueda" style="display: none;">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="search-results" id="searchResults" role="listbox" aria-label="Resultados de búsqueda"></div>
+            </div>
+
+            <!-- Filter/Sort Controls - NUEVA FUNCIONALIDAD -->
+            <div class="product-controls">
+                <div class="sort-controls">
+                    <label for="sortSelect">Ordenar por:</label>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="default">Relevancia</option>
+                        <option value="price-low">Precio: Menor a Mayor</option>
+                        <option value="price-high">Precio: Mayor a Menor</option>
+                        <option value="rating">Mejor Valorados</option>
+                        <option value="popularity">Más Populares</option>
+                    </select>
+                </div>
+                <div class="view-controls">
+                    <button class="view-btn active" data-view="grid" aria-label="Vista en rejilla">
+                        <i class="fas fa-th" aria-hidden="true"></i>
+                    </button>
+                    <button class="view-btn" data-view="list" aria-label="Vista en lista">
+                        <i class="fas fa-list" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid" role="list">
                 <!-- Los productos se generarán dinámicamente -->
+                <div class="products-loading" id="productsLoading">
+                    <div class="loading-spinner"></div>
+                    <p>Cargando productos increíbles...</p>
+                </div>
+            </div>
+
+            <!-- Load More Button - NUEVA FUNCIONALIDAD -->
+            <div class="load-more-container" style="display: none;">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <span>Cargar Más Productos</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about" role="complementary">
         <div class="container">
             <h2 class="section-title">¿Por Qué Elegir SportZone?</h2>
             <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-medal"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal" aria-hidden="true"></i>
+                    </div>
                     <h3>Calidad Premium</h3>
-                    <p>Solo el mejor equipamiento deportivo de marcas confiables</p>
+                    <p>Solo el mejor equipamiento deportivo de marcas confiables y reconocidas mundialmente</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-shipping-fast"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast" aria-hidden="true"></i>
+                    </div>
                     <h3>Envío Rápido</h3>
-                    <p>Envío rápido y confiable para que te equipes cuanto antes</p>
+                    <p>Envío rápido y confiable para que te equipes cuanto antes y no pierdas tiempo</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-headset"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset" aria-hidden="true"></i>
+                    </div>
                     <h3>Soporte Experto</h3>
-                    <p>Asesoría profesional de nuestros expertos en deportes</p>
+                    <p>Asesoría profesional de nuestros expertos en deportes y fitness</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - NUEVA SECCIÓN -->
+    <section id="contact" class="contact" role="complementary">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Mérida, Yucatán, México</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+52 999 123 4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contacto@sportzone.mx</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" class="social-link">
+                            <i class="fab fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="social-link">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="social-link">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form class="newsletter-form" id="newsletterForm">
+                        <h3>Suscríbete a nuestro newsletter</h3>
+                        <p>Recibe ofertas exclusivas y novedades deportivas</p>
+                        <div class="form-group">
+                            <input type="email" 
+                                   id="newsletterEmail" 
+                                   placeholder="Tu email" 
+                                   required 
+                                   aria-label="Email para newsletter">
+                            <button type="submit" aria-label="Suscribirse al newsletter">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Shopping Cart Sidebar -->
-    <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar" id="cartSidebar" role="dialog" aria-labelledby="cart-title" aria-modal="true">
         <div class="cart-header">
-            <h3>Carrito de Compras</h3>
-            <button class="close-cart" id="closeCart">
-                <i class="fas fa-times"></i>
+            <h3 id="cart-title">Carrito de Compras</h3>
+            <button class="close-cart" id="closeCart" aria-label="Cerrar carrito">
+                <i class="fas fa-times" aria-hidden="true"></i>
             </button>
         </div>
-        <div class="cart-items" id="cartItems">
+        <div class="cart-items" id="cartItems" role="list">
             <!-- Los artículos del carrito se generarán dinámicamente -->
         </div>
         <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total: $<span id="cartTotal">0.00</span></span>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Total: $<span id="cartTotal">0.00</span></span>
+                </div>
+                <div class="cart-savings" id="cartSavings" style="display: none;">
+                    <span class="savings-text">Ahorras: $<span id="savingsAmount">0.00</span></span>
+                </div>
             </div>
-            <button class="checkout-btn">Finalizar Compra</button>
+            <button class="checkout-btn" id="checkoutBtn">
+                <span>Finalizar Compra</span>
+                <i class="fas fa-credit-card" aria-hidden="true"></i>
+            </button>
+            <div class="secure-checkout">
+                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                <span>Compra 100% segura</span>
+            </div>
         </div>
     </div>
 
     <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+
+    <!-- Quick View Modal - NUEVA FUNCIONALIDAD -->
+    <div class="quick-view-modal" id="quickViewModal" role="dialog" aria-labelledby="quick-view-title" aria-modal="true" style="display: none;">
+        <div class="modal-content">
+            <button class="close-modal" id="closeQuickView" aria-label="Cerrar vista rápida">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div class="quick-view-content" id="quickViewContent">
+                <!-- Contenido se genera dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer" role="alert" aria-live="polite"></div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-dumbbell"></i>
-                    <span>SportZone</span>
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-dumbbell" aria-hidden="true"></i>
+                        <span>SportZone</span>
+                    </div>
+                    <p>Tu destino para el mejor equipamiento deportivo premium. Elevamos tu rendimiento al siguiente nivel.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" class="social-link">
+                            <i class="fab fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="social-link">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="social-link">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#products">Productos</a></li>
+                        <li><a href="#about">Sobre Nosotros</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Envíos y Devoluciones</a></li>
+                        <li><a href="#">Garantías</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Mérida, Yucatán</p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> +52 999 123 4567</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> contacto@sportzone.mx</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
                 <p>&copy; 2024 SportZone. Todos los derechos reservados.</p>
+                <div class="footer-credits">
+                    <span>Creado con ❤️ por el equipo SportZone</span>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Scroll to Top Button (generado dinámicamente por JS) -->
+    
+    <!-- Scripts -->
     <script src="script.js"></script>
+    
+    <!-- Analytics placeholder -->
+    <script>
+        // Placeholder para analytics
+        console.log('SportZone Analytics initialized');
+        
+        // Basic performance monitoring
+        window.addEventListener('load', () => {
+            const loadTime = performance.now();
+            console.log(`SportZone loaded in ${Math.round(loadTime)}ms`);
+        });
+    </script>
 </body>
 </html>
