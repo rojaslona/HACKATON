@@ -189,7 +189,6 @@ class SportStore {
             <div class="product-image">
                 <img src="${product.image ? product.image : ''}" alt="${product.name}" class="product-img" />
                 ${product.icon ? `<i class="${product.icon}"></i>` : ''}
-                ${product.stock < 10 ? '<span class="low-stock-badge">¡Pocas unidades!</span>' : ''}
             </div>
             <div class="product-content">
                 <h3 class="product-name">${product.name}</h3>
@@ -237,9 +236,14 @@ class SportStore {
     }
 
     getStockText(stock) {
-        if (stock === 0) return '<span class="out-of-stock">Sin stock</span>';
-        if (stock < 5) return `<span class="low-stock">Solo ${stock} disponibles</span>`;
-        return `<span class="in-stock">${stock} disponibles</span>`;
+        if (stock === 0) return '<span class="product-stock-text out-of-stock">Sin stock</span>';
+        if (stock < 5) {
+            return `
+                <span class="product-stock-text low-stock">Solo ${stock} disponibles</span>
+                <span class="low-stock-indicator"><i class="fas fa-exclamation-circle" aria-hidden="true"></i> Pocas unidades</span>
+            `;
+        }
+        return `<span class="product-stock-text in-stock">${stock} disponibles</span>`;
     }
 
     // ====== BÚSQUEDA Y FILTROS ======
@@ -666,4 +670,4 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error inicializando SportZone:', error);
     }
 });
-//
+
