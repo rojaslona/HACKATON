@@ -1848,11 +1848,11 @@ html {
 .products {
     position: relative;
     background: linear-gradient(135deg, 
-        rgb(215, 8, 8) 0%,
-        rgba(55, 138, 221, 0.98) 25%,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(248, 249, 250, 0.98) 25%,
         rgba(231, 76, 60, 0.02) 50%,
-        rgba(212, 61, 6, 0.98) 75%,
-        rgba(55, 138, 221, 0.98) 100%);
+        rgba(248, 249, 250, 0.98) 75%,
+        rgba(255, 255, 255, 1) 100%);
     background-size: 200% 200%;
     animation: backgroundShift 12s ease-in-out infinite;
 }
@@ -1929,7 +1929,83 @@ html {
     opacity: 1;
 }
 
+/* Resultados de búsqueda (dropdown) */
+.search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 20;
+}
 
+.search-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.search-result-item:hover {
+    background: #f8f9fa;
+}
+
+.search-result-item small {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.no-results {
+    padding: 0.75rem 1rem;
+    color: #666;
+}
+
+/* Vista en lista para productos */
+.products-grid.list-view {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.product-card .product-name,
+.product-card .product-description,
+.product-card .product-price,
+.product-card .product-stock {
+    mix-blend-mode: luminosity;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.55), 0 1px 0 #000;
+    transition: color 0.3s;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 0.2rem;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+}
+
+.stars i {
+    font-size: 1.1rem;
+    color: #ffd700;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+    mix-blend-mode: normal;
+}
+
+.rating-text {
+    margin-left: 0.4rem;
+    font-size: 0.95rem;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+    mix-blend-mode: luminosity;
+}
 
 /* =========================================================
    Fondo con MUCHAS partículas animadas (circulares, anillos,
@@ -1943,11 +2019,11 @@ html {
 
 /* Paleta: toma colores existentes si están definidos en tu CSS */
 :root {
-  --c1: var(--primary, var(--primary-color, #e74c3c));  /* Rojo */
-  --c2: var(--secondary, var(--secondary-color, #000000)); /* Green */
-  --c3: var(--accent, var(--accent-color, #0b0bf5));   /* Amber/Orange */
-  --c4: var(--info, var(--info-color, #ff0303));       /* Blue */
-  --c5: var(--warning, var(--warning-color, #4005ff)); /* Yellow */
+  --c1: var(--primary, var(--primary-color, #14b8a6));  /* Teal */
+  --c2: var(--secondary, var(--secondary-color, #22c55e)); /* Green */
+  --c3: var(--accent, var(--accent-color, #f59e0b));   /* Amber/Orange */
+  --c4: var(--info, var(--info-color, #3b82f6));       /* Blue */
+  --c5: var(--warning, var(--warning-color, #eab308)); /* Yellow */
 }
 
 /* Asegura apilamiento correcto: contenido por encima del fondo animado */
@@ -2287,3 +2363,5 @@ html {
    - Se incluyen formas: círculos, anillos, cuadrados y triángulos.
    - Sin JS: alto rendimiento y compatible en navegadores modernos.
    ========================================================= */
+/*
+
