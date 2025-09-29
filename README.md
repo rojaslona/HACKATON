@@ -1,86 +1,79 @@
 # HACKATON-1
 
-## SportZone – Premium Sports Equipment Store (Landing Page)
+# ARJACAR - Landing Page de Equipamiento Deportivo Premium
 
-Welcome to **SportZone**, a modern, interactive landing page for a fictional online sports equipment store. This project demonstrates a professional-grade front-end experience using HTML, CSS, and JavaScript—perfect for hackathons, portfolios, or as a template for real e-commerce shops.
-
----
-
-## 🚀 Features
-
-- **Engaging Landing Page**: Hero section, navigation, product highlights, about, contact, and footer.
-- **Dynamic Product Rendering**: Products are displayed dynamically with JavaScript.
-- **Shopping Cart**: Add/remove products, cart sidebar, animated actions, and persistent data via local storage.
-- **Responsive Design**: Mobile-first, adapts smoothly to all devices.
-- **Modern Animations**: Subtle transitions, animated product cards, scroll effects, and notifications.
-- **User Experience**: Smooth navigation, scroll-to-top, hamburger menu for mobile, and interactive feedback.
+Bienvenido a **ARJACAR**, una *landing page* moderna e interactiva para una tienda de equipamiento deportivo. Este proyecto demuestra nuestras habilidades de front-end de nivel profesional utilizando HTML, CSS y JavaScript. Su finalidad es funcionar como plantilla para tiendas de comercio electrónico reales.
 
 ---
 
-## 🛠️ Built With
+## 🚀 Características
 
-- **HTML5** – Semantic structure and accessibility.
-- **CSS3** – Custom styles, responsive layouts, and engaging animations.
-- **JavaScript (ES6+)** – Modular, class-based logic for UI and cart functionality. No frameworks required.
-- **Font Awesome** – For vector product/category icons.
+Esta *landing page* incluye las siguientes secciones y funcionalidades:
+
+-   **Sección Principal (_Hero Section_)**: Un encabezado atractivo con el lema "Eleva Tu Juego" y una llamada a la acción.
+-   **Sección de Productos**:
+    -   Renderizado dinámico de productos desde JavaScript.
+    -   Buscador inteligente para filtrar productos en tiempo real.
+    -   Controles para ordenar los productos por precio, valoración y popularidad.
+-   **Carrito de Compras Funcional**:
+    -   Permite añadir y eliminar productos.
+    -   Barra lateral que muestra los productos en el carrito y el total.
+    -   Notificaciones animadas al interactuar con el carrito.
+-   **Secciones Informativas**:
+    -   **Sobre Nosotros**: Destaca las ventajas de la tienda como la calidad, el envío y el soporte.
+    -   **Testimonios**: Muestra opiniones de clientes.
+    -   **Ubicación y Mapa**: Incluye un mapa integrado para la tienda física.
+    -   **Preguntas Frecuentes (FAQ)**: Resuelve dudas comunes sobre envíos, devoluciones y pagos.
+-   **Formulario de Contacto**: Permite a los usuarios suscribirse a un _newsletter_.
+-   **Diseño Totalmente Responsivo**: Se adapta a cualquier tamaño de pantalla, desde móviles hasta ordenadores de escritorio.
+-   **Animaciones Modernas**: Transiciones suaves y efectos visuales que mejoran la experiencia de usuario.
 
 ---
 
-## 📂 Structure
+## 🛠️ Construido Con
 
-```
+-   **HTML5**: Para una estructura semántica y accesible.
+-   **CSS3**: Para estilos personalizados, diseño responsivo y animaciones.
+-   **JavaScript (ES6+)**: Para la lógica de la interfaz, la renderización de productos y la gestión del carrito, sin _frameworks_.
+-   **Font Awesome**: Para los iconos utilizados en toda la página.
+
+---
+
+## 📂 Estructura de Archivos
 /
-├── index.html      # Main landing page structure
-├── script.js       # Application logic (products, cart, UI)
-├── styles.css      # Styles and responsive design
-├── .gitignore
+├── index.html      # Estructura principal de la landing page
+├── script.js       # Lógica de la aplicación (productos, carrito, etc.)
+├── styles.css      # Estilos, diseño responsivo y animaciones
+├── images/         # Carpeta para las imágenes de productos y logo
 └── README.md
-```
+
+## 🖥️ Cómo Empezar
+
+Para ejecutar el proyecto localmente:
+1.  **Clona el repositorio:**
+    ```sh
+    git clone [https://github.com/rojaslona/HACKATON-1.git](https://github.com/rojaslona/HACKATON-1.git)
+    ```
+2.  **Abre `index.html` en tu navegador.**
+    ¡No se requieren pasos de compilación ni dependencias!
 
 ---
 
-## 🖥️ Getting Started
+## ✨ Personalización
 
-To run locally:
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/rojaslona/HACKATON-1.git
-   ```
-2. **Open `index.html` in your browser.**  
-   No build steps or dependencies required!
+-   **Añadir Productos**: Modifica el array `products` en `script.js` para cambiar el inventario.
+-   **Cambiar Estilos**: Edita `styles.css` para ajustar la paleta de colores, las fuentes o las animaciones.
+-   **Actualizar Contenido**: Modifica el archivo `index.html` para cambiar textos, el logo o la información de contacto.
 
----
+## 👥 Creadores
 
-## ✨ Demo
+Este proyecto fue desarrollado por:
 
-> _Insert screenshots or a GIF here if you wish!_
-
----
-
-## 📦 Customization
-
-- **Add Products:** Modify the `products` array in `script.js` to add or change inventory.
-- **Style Changes:** Tweak `styles.css` to update the color scheme, spacing, or animations.
-- **Branding:** Update the logo and store name in `index.html` and navigation.
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE) (add a LICENSE file if you wish).
-
----
-
-## 👤 Author
-
-- GitHub: [rojaslona](https://github.com/rojaslona)
-
----
-
-> _Made for hackathon learning and fun!_
+-   Angélica Chin Cantillo
+-   Jose Alejandro Rojas Lona
+-   Raul de Jesus Vargas Hernandez
+-   Ramon Dominguez
+-   Alejandro Delgado
+-   Aylin Melendez Juan
+-   Carlos Ortiz Coreño
+-   José Manuel Hernandez Escutia
