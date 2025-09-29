@@ -1100,47 +1100,13 @@ body::before {
    ANIMACIONES PARA PARTÍCULAS Y LOADING
    =========================================== */
 
-/* Animación de partículas flotantes */
-@keyframes floatingParticles {
+/* Animación de fondo simplificada */
+@keyframes backgroundShift {
     0%, 100% {
-        transform: translateY(0) translateX(0) rotate(0deg) scale(1);
-        opacity: 0.3;
-    }
-    20% {
-        transform: translateY(-15px) translateX(10px) rotate(72deg) scale(1.1);
-        opacity: 0.5;
-    }
-    40% {
-        transform: translateY(-25px) translateX(-5px) rotate(144deg) scale(0.9);
-        opacity: 0.4;
-    }
-    60% {
-        transform: translateY(-20px) translateX(15px) rotate(216deg) scale(1.05);
-        opacity: 0.6;
-    }
-    80% {
-        transform: translateY(-10px) translateX(-10px) rotate(288deg) scale(0.95);
-        opacity: 0.45;
-    }
-}
-
-/* Animación de ondas */
-@keyframes waveMotion {
-    0%, 100% {
-        transform: translateX(0) translateY(0) skew(0deg);
-        opacity: 0.2;
-    }
-    25% {
-        transform: translateX(20px) translateY(-10px) skew(2deg);
-        opacity: 0.3;
+        background-position: 0% 50%;
     }
     50% {
-        transform: translateX(-15px) translateY(-20px) skew(-1deg);
-        opacity: 0.25;
-    }
-    75% {
-        transform: translateX(10px) translateY(-15px) skew(1.5deg);
-        opacity: 0.35;
+        background-position: 100% 50%;
     }
 }
 
@@ -1179,25 +1145,7 @@ body::before {
     }
 }
 
-/* Animación de partículas para toda la sección */
-@keyframes sectionParticles {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 0.4;
-    }
-    25% {
-        transform: translate(30px, -20px) rotate(90deg);
-        opacity: 0.6;
-    }
-    50% {
-        transform: translate(-20px, -40px) rotate(180deg);
-        opacity: 0.3;
-    }
-    75% {
-        transform: translate(-30px, -10px) rotate(270deg);
-        opacity: 0.7;
-    }
-}
+
 
 /* ===========================================
    RESPONSIVE DESIGN PARA CONTACT Y FOOTER
@@ -1674,7 +1622,7 @@ html {
     border: 1px solid rgba(231, 76, 60, 0.1);
 }
 
-/* Partículas flotantes de fondo */
+/* Fondo animado simple */
 .products-loading::before {
     content: '';
     position: absolute;
@@ -1682,37 +1630,15 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        /* Partículas grandes */
-        radial-gradient(circle at 10% 20%, rgba(231, 76, 60, 0.15) 0%, transparent 20%),
-        radial-gradient(circle at 80% 30%, rgba(52, 152, 219, 0.15) 0%, transparent 25%),
-        radial-gradient(circle at 40% 70%, rgba(46, 204, 113, 0.15) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.15) 0%, transparent 15%),
-        /* Partículas medianas */
-        radial-gradient(circle at 30% 10%, rgba(231, 76, 60, 0.1) 0%, transparent 10%),
-        radial-gradient(circle at 70% 60%, rgba(52, 152, 219, 0.1) 0%, transparent 12%),
-        radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.1) 0%, transparent 8%),
-        /* Partículas pequeñas */
-        radial-gradient(circle at 60% 20%, rgba(155, 89, 182, 0.08) 0%, transparent 6%),
-        radial-gradient(circle at 15% 60%, rgba(231, 76, 60, 0.08) 0%, transparent 5%),
-        radial-gradient(circle at 85% 40%, rgba(52, 152, 219, 0.08) 0%, transparent 7%);
-    animation: floatingParticles 15s ease-in-out infinite;
+    background: linear-gradient(45deg, 
+        rgba(231, 76, 60, 0.05) 0%, 
+        rgba(52, 152, 219, 0.05) 25%, 
+        rgba(46, 204, 113, 0.05) 50%, 
+        rgba(155, 89, 182, 0.05) 75%, 
+        rgba(231, 76, 60, 0.05) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease-in-out infinite;
     z-index: 1;
-}
-
-/* Ondas de fondo */
-.products-loading::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        linear-gradient(45deg, transparent 40%, rgba(231, 76, 60, 0.03) 50%, transparent 60%),
-        linear-gradient(-45deg, transparent 40%, rgba(52, 152, 219, 0.03) 50%, transparent 60%);
-    animation: waveMotion 8s ease-in-out infinite;
-    z-index: 2;
 }
 
 /* Contenido del loading por encima de las animaciones */
@@ -1754,36 +1680,17 @@ html {
     padding: 2rem 0;
 }
 
-/* Fondo animado para la sección de productos */
+/* Fondo animado para la sección de productos - SIMPLIFICADO */
 .products {
     position: relative;
-    overflow: hidden;
-}
-
-.products::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        /* Partículas deportivas grandes */
-        radial-gradient(circle at 5% 15%, rgba(231, 76, 60, 0.03) 0%, transparent 25%),
-        radial-gradient(circle at 95% 25%, rgba(52, 152, 219, 0.03) 0%, transparent 30%),
-        radial-gradient(circle at 25% 85%, rgba(46, 204, 113, 0.03) 0%, transparent 25%),
-        radial-gradient(circle at 85% 85%, rgba(155, 89, 182, 0.03) 0%, transparent 20%),
-        /* Partículas medianas */
-        radial-gradient(circle at 45% 35%, rgba(231, 76, 60, 0.02) 0%, transparent 15%),
-        radial-gradient(circle at 75% 65%, rgba(52, 152, 219, 0.02) 0%, transparent 18%),
-        radial-gradient(circle at 15% 45%, rgba(46, 204, 113, 0.02) 0%, transparent 12%),
-        /* Micro partículas */
-        radial-gradient(circle at 35% 75%, rgba(155, 89, 182, 0.015) 0%, transparent 8%),
-        radial-gradient(circle at 65% 25%, rgba(231, 76, 60, 0.015) 0%, transparent 10%),
-        radial-gradient(circle at 55% 55%, rgba(52, 152, 219, 0.015) 0%, transparent 6%);
-    animation: sectionParticles 20s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 1;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 1) 0%,
+        rgba(248, 249, 250, 0.98) 25%,
+        rgba(231, 76, 60, 0.02) 50%,
+        rgba(248, 249, 250, 0.98) 75%,
+        rgba(255, 255, 255, 1) 100%);
+    background-size: 200% 200%;
+    animation: backgroundShift 12s ease-in-out infinite;
 }
 
 .products .container {
@@ -1846,6 +1753,366 @@ html {
     opacity: 1;
 }
 
+<<<<<<< HEAD
+
+
+/* =========================================================
+   Fondo con MUCHAS partículas animadas (circulares, anillos,
+   cuadrados y triángulos) para:
+   - #products.products
+   - #about.about
+
+   Listo para copiar y pegar. No requiere cambios en el HTML.
+   Respeta tu paleta: usa variables CSS existentes si ya las definiste.
+   ========================================================= */
+
+/* Paleta: toma colores existentes si están definidos en tu CSS */
+:root {
+  --c1: var(--primary, var(--primary-color, #14b8a6));  /* Teal */
+  --c2: var(--secondary, var(--secondary-color, #22c55e)); /* Green */
+  --c3: var(--accent, var(--accent-color, #f59e0b));   /* Amber/Orange */
+  --c4: var(--info, var(--info-color, #3b82f6));       /* Blue */
+  --c5: var(--warning, var(--warning-color, #eab308)); /* Yellow */
+}
+
+/* Asegura apilamiento correcto: contenido por encima del fondo animado */
+.products,
+.about {
+  position: relative;
+  overflow: hidden; /* Oculta los bordes de las partículas al animar */
+  z-index: 0;       /* Crea un contexto para los pseudo-elementos */
+}
+
+/* Eleva el contenido por encima de las partículas */
+.products .container,
+.about .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Capas base para las partículas */
+.products::before,
+.products::after,
+.about::before,
+.about::after {
+  content: "";
+  position: absolute;
+  inset: -18% -15%;   /* Sangría extra para animaciones amplias */
+  pointer-events: none;
+  background-repeat: no-repeat;
+  will-change: transform, background-position, filter, opacity;
+  z-index: 0;
+}
+
+/* =========================================================
+   CAPA 1 (::before): MUCHAS partículas circulares y anillos
+   - No usamos background-size aquí: cada gradiente posiciona su "punto"
+     en la sección mediante "at X% Y%" y radios en px.
+   - Más y más grandes respecto a la versión anterior.
+   ========================================================= */
+
+/* Products - capa de círculos y anillos */
+.products::before {
+  background-image:
+    /* Círculos grandes y medianos (superior) */
+    radial-gradient(circle at 5% 12%,    var(--c1) 0 8px, transparent 8.1px),
+    radial-gradient(circle at 12% 18%,   var(--c2) 0 6px, transparent 6.1px),
+    radial-gradient(circle at 20% 10%,   var(--c3) 0 7px, transparent 7.1px),
+    radial-gradient(circle at 28% 16%,   var(--c4) 0 9px, transparent 9.1px),
+    radial-gradient(circle at 36% 12%,   var(--c5) 0 6px, transparent 6.1px),
+    radial-gradient(circle at 44% 20%,   var(--c2) 0 8px, transparent 8.1px),
+    radial-gradient(circle at 52% 14%,   var(--c3) 0 10px, transparent 10.1px),
+    radial-gradient(circle at 60% 18%,   var(--c1) 0 7px, transparent 7.1px),
+    radial-gradient(circle at 70% 10%,   var(--c4) 0 8px, transparent 8.1px),
+    radial-gradient(circle at 82% 16%,   var(--c5) 0 6px, transparent 6.1px),
+    radial-gradient(circle at 92% 12%,   var(--c2) 0 8px, transparent 8.1px),
+
+    /* Anillos superiores */
+    radial-gradient(circle at 9% 8%,     transparent 0 10px, var(--c4) 10px 12px, transparent 12.5px),
+    radial-gradient(circle at 34% 6%,    transparent 0 12px, var(--c1) 12px 14px, transparent 14.5px),
+    radial-gradient(circle at 58% 8%,    transparent 0 11px, var(--c3) 11px 12px, transparent 12.5px),
+    radial-gradient(circle at 76% 6%,    transparent 0 13px, var(--c2) 13px 15px, transparent 15.5px),
+    radial-gradient(circle at 88% 9%,    transparent 0 10px, var(--c5) 10px 11px, transparent 11.5px),
+
+    /* Círculos (inferior) */
+    radial-gradient(circle at 8% 86%,    var(--c4) 0 9px, transparent 9.1px),
+    radial-gradient(circle at 18% 78%,   var(--c5) 0 7px, transparent 7.1px),
+    radial-gradient(circle at 28% 90%,   var(--c2) 0 8px, transparent 8.1px),
+    radial-gradient(circle at 40% 82%,   var(--c3) 0 6px, transparent 6.1px),
+    radial-gradient(circle at 52% 92%,   var(--c1) 0 10px, transparent 10.1px),
+    radial-gradient(circle at 64% 86%,   var(--c4) 0 8px, transparent 8.1px),
+    radial-gradient(circle at 76% 78%,   var(--c5) 0 7px, transparent 7.1px),
+    radial-gradient(circle at 88% 90%,   var(--c2) 0 9px, transparent 9.1px),
+
+    /* Anillos inferiores */
+    radial-gradient(circle at 14% 92%,   transparent 0 12px, var(--c1) 12px 14px, transparent 14.5px),
+    radial-gradient(circle at 36% 94%,   transparent 0 10px, var(--c5) 10px 12px, transparent 12.5px),
+    radial-gradient(circle at 62% 96%,   transparent 0 11px, var(--c2) 11px 13px, transparent 13.5px),
+    radial-gradient(circle at 84% 94%,   transparent 0 13px, var(--c3) 13px 15px, transparent 15.5px),
+
+    /* Círculos intermedios (zona media) */
+    radial-gradient(circle at 10% 50%,   var(--c2) 0 10px, transparent 10.1px),
+    radial-gradient(circle at 24% 48%,   var(--c3) 0 7px,  transparent 7.1px),
+    radial-gradient(circle at 38% 52%,   var(--c1) 0 9px,  transparent 9.1px),
+    radial-gradient(circle at 52% 46%,   var(--c4) 0 6px,  transparent 6.1px),
+    radial-gradient(circle at 66% 54%,   var(--c5) 0 8px,  transparent 8.1px),
+    radial-gradient(circle at 80% 48%,   var(--c3) 0 7px,  transparent 7.1px),
+    radial-gradient(circle at 92% 52%,   var(--c1) 0 10px, transparent 10.1px),
+
+    /* Anillos medios */
+    radial-gradient(circle at 18% 56%,   transparent 0 12px, var(--c4) 12px 13.5px, transparent 14px),
+    radial-gradient(circle at 44% 58%,   transparent 0 14px, var(--c2) 14px 16px,  transparent 16.5px),
+    radial-gradient(circle at 72% 56%,   transparent 0 11px, var(--c5) 11px 12.5px, transparent 13px);
+
+  opacity: 0.9;
+  animation: particles-drift-big 16s ease-in-out infinite alternate;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.12));
+}
+
+/* About - capa de círculos y anillos (más, igual de grandes) */
+.about::before {
+  background-image:
+    radial-gradient(circle at 6% 14%,    var(--c4) 0 9px,  transparent 9.1px),
+    radial-gradient(circle at 14% 20%,   var(--c1) 0 7px,  transparent 7.1px),
+    radial-gradient(circle at 24% 12%,   var(--c5) 0 8px,  transparent 8.1px),
+    radial-gradient(circle at 34% 18%,   var(--c2) 0 10px, transparent 10.1px),
+    radial-gradient(circle at 46% 10%,   var(--c3) 0 7px,  transparent 7.1px),
+    radial-gradient(circle at 58% 16%,   var(--c4) 0 9px,  transparent 9.1px),
+    radial-gradient(circle at 70% 12%,   var(--c1) 0 8px,  transparent 8.1px),
+    radial-gradient(circle at 82% 18%,   var(--c5) 0 7px,  transparent 7.1px),
+    radial-gradient(circle at 92% 14%,   var(--c2) 0 10px, transparent 10.1px),
+
+    radial-gradient(circle at 10% 88%,   var(--c3) 0 9px,  transparent 9.1px),
+    radial-gradient(circle at 22% 82%,   var(--c2) 0 7px,  transparent 7.1px),
+    radial-gradient(circle at 36% 90%,   var(--c1) 0 10px, transparent 10.1px),
+    radial-gradient(circle at 50% 84%,   var(--c5) 0 8px,  transparent 8.1px),
+    radial-gradient(circle at 66% 92%,   var(--c4) 0 9px,  transparent 9.1px),
+    radial-gradient(circle at 80% 86%,   var(--c3) 0 7px,  transparent 7.1px),
+    radial-gradient(circle at 92% 90%,   var(--c2) 0 10px, transparent 10.1px),
+
+    radial-gradient(circle at 12% 8%,    transparent 0 12px, var(--c2) 12px 14px, transparent 14.5px),
+    radial-gradient(circle at 40% 6%,    transparent 0 11px, var(--c5) 11px 13px, transparent 13.5px),
+    radial-gradient(circle at 68% 8%,    transparent 0 13px, var(--c1) 13px 15px, transparent 15.5px),
+    radial-gradient(circle at 86% 6%,    transparent 0 12px, var(--c4) 12px 14px, transparent 14.5px),
+
+    radial-gradient(circle at 18% 56%,   transparent 0 12px, var(--c3) 12px 13.5px, transparent 14px),
+    radial-gradient(circle at 50% 52%,   transparent 0 15px, var(--c2) 15px 17px,  transparent 17.5px),
+    radial-gradient(circle at 82% 56%,   transparent 0 11px, var(--c5) 11px 12.5px, transparent 13px),
+
+    radial-gradient(circle at 12% 50%,   var(--c1) 0 10px, transparent 10.1px),
+    radial-gradient(circle at 30% 48%,   var(--c4) 0 7px,  transparent 7.1px),
+    radial-gradient(circle at 48% 54%,   var(--c5) 0 9px,  transparent 9.1px),
+    radial-gradient(circle at 66% 46%,   var(--c3) 0 8px,  transparent 8.1px),
+    radial-gradient(circle at 84% 52%,   var(--c2) 0 10px, transparent 10.1px);
+
+  opacity: 0.88;
+  animation: particles-drift-big 18s ease-in-out infinite alternate;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.10));
+}
+
+/* =========================================================
+   CAPA 2 (::after): Partículas con más formas y tamaño controlado
+   - Mezcla de cuadrados, triángulos y círculos.
+   - Aquí SÍ usamos background-size y background-position por capa.
+   ========================================================= */
+
+/* Helper para las listas: fallback si el navegador no soporta listas largas (muy raro) */
+@supports (background: radial-gradient(circle, red, transparent)) {
+  .products::after {
+    /* 18 capas (sq/tri/circ) */
+    background-image:
+      /* 1 */ linear-gradient(0deg, var(--c1) 0 100%),
+      /* 2 */ conic-gradient(from 225deg, var(--c2) 0 120deg, transparent 120deg 360deg),
+      /* 3 */ linear-gradient(0deg, var(--c3) 0 100%),
+      /* 4 */ radial-gradient(circle, var(--c4) 0 50%, transparent 51%),
+      /* 5 */ conic-gradient(from 180deg, var(--c5) 0 120deg, transparent 120deg 360deg),
+      /* 6 */ linear-gradient(0deg, var(--c2) 0 100%),
+      /* 7 */ radial-gradient(circle, var(--c1) 0 50%, transparent 51%),
+      /* 8 */ conic-gradient(from 300deg, var(--c3) 0 120deg, transparent 120deg 360deg),
+      /* 9 */ linear-gradient(0deg, var(--c4) 0 100%),
+      /* 10 */ radial-gradient(circle, var(--c5) 0 50%, transparent 51%),
+      /* 11 */ conic-gradient(from 45deg, var(--c1) 0 120deg, transparent 120deg 360deg),
+      /* 12 */ linear-gradient(0deg, var(--c2) 0 100%),
+      /* 13 */ radial-gradient(circle, var(--c3) 0 50%, transparent 51%),
+      /* 14 */ conic-gradient(from 255deg, var(--c4) 0 120deg, transparent 120deg 360deg),
+      /* 15 */ linear-gradient(0deg, var(--c5) 0 100%),
+      /* 16 */ radial-gradient(circle, var(--c2) 0 50%, transparent 51%),
+      /* 17 */ conic-gradient(from 135deg, var(--c1) 0 120deg, transparent 120deg 360deg),
+      /* 18 */ linear-gradient(0deg, var(--c3) 0 100%);
+
+    background-size:
+      /* 1 */ 14px 14px,
+      /* 2 */ 18px 18px,
+      /* 3 */ 12px 12px,
+      /* 4 */ 12px 12px,
+      /* 5 */ 16px 16px,
+      /* 6 */ 14px 14px,
+      /* 7 */ 16px 16px,
+      /* 8 */ 20px 20px,
+      /* 9 */ 12px 12px,
+      /* 10 */ 18px 18px,
+      /* 11 */ 16px 16px,
+      /* 12 */ 14px 14px,
+      /* 13 */ 14px 14px,
+      /* 14 */ 18px 18px,
+      /* 15 */ 16px 16px,
+      /* 16 */ 20px 20px,
+      /* 17 */ 18px 18px,
+      /* 18 */ 14px 14px;
+
+    background-position:
+      /* 1 */ 6% 22%,
+      /* 2 */ 14% 16%,
+      /* 3 */ 22% 10%,
+      /* 4 */ 30% 18%,
+      /* 5 */ 38% 12%,
+      /* 6 */ 46% 20%,
+      /* 7 */ 54% 14%,
+      /* 8 */ 62% 18%,
+      /* 9 */ 70% 10%,
+      /* 10 */ 78% 16%,
+      /* 11 */ 86% 12%,
+      /* 12 */ 94% 18%,
+      /* 13 */ 12% 78%,
+      /* 14 */ 28% 86%,
+      /* 15 */ 44% 82%,
+      /* 16 */ 60% 90%,
+      /* 17 */ 76% 84%,
+      /* 18 */ 90% 88%;
+
+    opacity: 0.85;
+    animation: particles-orbit 12s cubic-bezier(.4, .0, .2, 1) infinite alternate;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 3px 4px rgba(0,0,0,.14));
+  }
+
+  .about::after {
+    /* 18 capas con mayor tamaño medio */
+    background-image:
+      /* 1 */ linear-gradient(0deg, var(--c4) 0 100%),
+      /* 2 */ conic-gradient(from 210deg, var(--c1) 0 120deg, transparent 120deg 360deg),
+      /* 3 */ linear-gradient(0deg, var(--c5) 0 100%),
+      /* 4 */ radial-gradient(circle, var(--c2) 0 50%, transparent 51%),
+      /* 5 */ conic-gradient(from 330deg, var(--c3) 0 120deg, transparent 120deg 360deg),
+      /* 6 */ linear-gradient(0deg, var(--c1) 0 100%),
+      /* 7 */ radial-gradient(circle, var(--c5) 0 50%, transparent 51%),
+      /* 8 */ conic-gradient(from 120deg, var(--c4) 0 120deg, transparent 120deg 360deg),
+      /* 9 */ linear-gradient(0deg, var(--c2) 0 100%),
+      /* 10 */ radial-gradient(circle, var(--c3) 0 50%, transparent 51%),
+      /* 11 */ conic-gradient(from 30deg, var(--c5) 0 120deg, transparent 120deg 360deg),
+      /* 12 */ linear-gradient(0deg, var(--c4) 0 100%),
+      /* 13 */ radial-gradient(circle, var(--c1) 0 50%, transparent 51%),
+      /* 14 */ conic-gradient(from 255deg, var(--c2) 0 120deg, transparent 120deg 360deg),
+      /* 15 */ linear-gradient(0deg, var(--c3) 0 100%),
+      /* 16 */ radial-gradient(circle, var(--c4) 0 50%, transparent 51%),
+      /* 17 */ conic-gradient(from 90deg, var(--c1) 0 120deg, transparent 120deg 360deg),
+      /* 18 */ linear-gradient(0deg, var(--c5) 0 100%);
+
+    background-size:
+      /* 1 */ 16px 16px,
+      /* 2 */ 22px 22px,
+      /* 3 */ 14px 14px,
+      /* 4 */ 14px 14px,
+      /* 5 */ 20px 20px,
+      /* 6 */ 16px 16px,
+      /* 7 */ 18px 18px,
+      /* 8 */ 22px 22px,
+      /* 9 */ 14px 14px,
+      /* 10 */ 20px 20px,
+      /* 11 */ 18px 18px,
+      /* 12 */ 16px 16px,
+      /* 13 */ 16px 16px,
+      /* 14 */ 22px 22px,
+      /* 15 */ 18px 18px,
+      /* 16 */ 22px 22px,
+      /* 17 */ 20px 20px,
+      /* 18 */ 16px 16px;
+
+    background-position:
+      /* 1 */ 8% 24%,
+      /* 2 */ 18% 18%,
+      /* 3 */ 28% 12%,
+      /* 4 */ 40% 20%,
+      /* 5 */ 52% 14%,
+      /* 6 */ 64% 22%,
+      /* 7 */ 76% 16%,
+      /* 8 */ 88% 20%,
+      /* 9 */ 10% 80%,
+      /* 10 */ 26% 88%,
+      /* 11 */ 42% 84%,
+      /* 12 */ 58% 92%,
+      /* 13 */ 74% 86%,
+      /* 14 */ 88% 90%,
+      /* 15 */ 14% 54%,
+      /* 16 */ 34% 50%,
+      /* 17 */ 66% 56%,
+      /* 18 */ 86% 52%;
+
+    opacity: 0.8;
+    animation: particles-orbit 14s cubic-bezier(.4, .0, .2, 1) infinite alternate;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 3px 4px rgba(0,0,0,.12));
+  }
+}
+
+/* =========================================================
+   Intensidad de movimiento y capas por sección
+   ========================================================= */
+
+/* Products: más rápidos y con mayor amplitud */
+.products::before { animation-duration: 14s; }
+.products::after  { animation-duration: 11s; }
+
+/* About: también con más movimiento, pero ligeramente más suave */
+.about::before { animation-duration: 16s; }
+.about::after  { animation-duration: 13s; }
+
+/* Opcional: puedes activar mezcla para un look más llamativo */
+/*
+.products::before, .products::after,
+.about::before, .about::after { mix-blend-mode: screen; }
+*/
+
+/* =========================================================
+   Accesibilidad: usuarios con "reduced motion"
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .products::before,
+  .products::after,
+  .about::before,
+  .about::after {
+    animation: none;
+    opacity: 0.25;  /* Mantiene el look sin distracción */
+    filter: none;
+  }
+}
+
+/* =========================================================
+   Animaciones (más amplias y dinámicas)
+   ========================================================= */
+
+/* Deriva amplia con ligera rotación y zoom */
+@keyframes particles-drift-big {
+  0%   { transform: translate3d(-4%,  6%, 0) rotate(-1.2deg) scale(1); }
+  50%  { transform: translate3d( 5%, -6%, 0) rotate( 1.2deg) scale(1.03); }
+  100% { transform: translate3d(-4%,  6%, 0) rotate(-1.2deg) scale(1); }
+}
+
+/* Órbita/vaivén con mayor amplitud */
+@keyframes particles-orbit {
+  0%   { transform: translate3d( 8%, -6%, 0) rotate(1.6deg)  scale(1.02); }
+  50%  { transform: translate3d(-8%,  6%, 0) rotate(-1.6deg) scale(1.05); }
+  100% { transform: translate3d( 8%, -6%, 0) rotate(1.6deg)  scale(1.02); }
+}
+
+/* =========================================================
+   Notas:
+   - Se añadieron MUCHAS más partículas, tamaños mayores (hasta 22px)
+     y animaciones con más amplitud y velocidad.
+   - Se incluyen formas: círculos, anillos, cuadrados y triángulos.
+   - Sin JS: alto rendimiento y compatible en navegadores modernos.
+   ========================================================= */
+=======
 .product-card .product-name,
 .product-card .product-description,
 .product-card .product-price,
@@ -1879,3 +2146,4 @@ html {
     mix-blend-mode: luminosity;
 }
 
+>>>>>>> 1d43263caae6ea01a7e7d399c5995723d5314a08
