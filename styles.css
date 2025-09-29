@@ -1805,117 +1805,6 @@ html {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Logo */
 .logo-img {
     width: 80px;          
@@ -1943,4 +1832,16 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/* Desaturar y ajustar opacidad de imágenes de productos por defecto */
+.product-img {
+    filter: grayscale(30%) saturate(0.7);
+    opacity: 0.85;
+    transition: filter 0.4s, opacity 0.4s;
+}
+
+.product-card:hover .product-img {
+    filter: grayscale(0%) saturate(1.3);
+    opacity: 1;
 }
