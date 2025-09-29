@@ -71,7 +71,7 @@ Este proyecto fue desarrollado por:
 
 -   Angélica Chin Cantillo
 -   Jose Alejandro Rojas Lona
--   Raul de jesus Vargas Hernandez
+-   Raul de Jesus Vargas Hernandez
 -   Ramon Dominguez
 -   Alejandro Delgado
 -   Aylin Melendez Juan
