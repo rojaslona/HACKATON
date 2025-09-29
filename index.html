@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARJACAR - Equipamiento Deportivo Premium</title>
     <meta name="description" content="Descubre el mejor equipamiento deportivo premium para elevar tu rendimiento. Zapatillas, equipos de gimnasio y más.">
+    <!-- estilos -->
     <link rel="stylesheet" href="styles.css">
+    <!-- iconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
-    <!-- Preload critical resources for better performance -->
+    <!-- precarga de recursos -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
 </head>
 <body>
-    <!-- Header Navigation -->
+    <!-- ================== ENCABEZADO Y NAVEGACIÓN ================== -->
     <header class="header" role="banner">
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
+                <!-- Nuestro logo  -->
                 <div class="nav-logo">
                     <img src="images/arjacar_logo_trans.png" alt="ARJACAR Logo" class="logo-img">
                     <!-- <span>arjacar</span> -->
                 </div>
+                <!-- Menú principal -->
                 <ul class="nav-menu" role="menubar">
                     <li class="nav-item" role="none">
                         <a href="#home" class="nav-link" role="menuitem">Inicio</a>
@@ -35,12 +39,14 @@
                         <a href="#contact" class="nav-link" role="menuitem">Contacto</a>
                     </li>
                 </ul>
+                <!-- Botón de carrito de compras -->
                 <div class="cart-container">
                     <button class="cart-btn" id="cartBtn" aria-label="Abrir carrito de compras">
                         <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                         <span class="cart-count" id="cartCount" aria-live="polite">0</span>
                     </button>
                 </div>
+                <!-- Menú para móviles -->
                 <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -52,7 +58,7 @@
 
    
 
-    <!-- Hero Section -->
+   <!-- =================== SECCIÓN HERO =================== -->
     <section id="home" class="hero" role="banner">
         <div class="hero-container">
             <div class="hero-content">
@@ -71,12 +77,12 @@
         </div>
     </section>
 
-    <!-- Products Section -->
+     <!-- =================== SECCIÓN PRODUCTOS =================== -->
     <section id="products" class="products" role="main">
         <div class="container">
             <h2 class="section-title">Productos Destacados</h2>
             
-            <!-- Smart Search Container - NUEVA FUNCIONALIDAD -->
+            <!-- Buscador de productos-->
             <div class="smart-search-container" role="search">
                 <div class="search-wrapper">
                     <i class="fas fa-search search-icon" aria-hidden="true"></i>
@@ -92,7 +98,7 @@
                 <div class="search-results" id="searchResults" role="listbox" aria-label="Resultados de búsqueda"></div>
             </div>
 
-            <!-- Filter/Sort Controls - NUEVA FUNCIONALIDAD -->
+            <!-- Controles sobre la vista y ordenar -->
             <div class="product-controls">
                 <div class="sort-controls">
                     <label for="sortSelect">Ordenar por:</label>
@@ -114,16 +120,16 @@
                 </div>
             </div>
 
-            <!-- Products Grid -->
+            <!-- Grid de los productos -->
             <div class="products-grid" id="productsGrid" role="list">
-                <!-- Los productos se generarán dinámicamente -->
+                <!-- Los productos se insertan dinamicamente desde el .js -->
                 <div class="products-loading" id="productsLoading">
                     <div class="loading-spinner"></div>
                     <p>Cargando productos increíbles...</p>
                 </div>
             </div>
 
-            <!-- Load More Button - NUEVA FUNCIONALIDAD -->
+            <!-- Botón para cargar más productos -->
             <div class="load-more-container" style="display: none;">
                 <button class="load-more-btn" id="loadMoreBtn">
                     <span>Cargar Más Productos</span>
@@ -133,7 +139,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- =================== SECCIÓN SOBRE NOSOTROS =================== -->
     <section id="about" class="about" role="complementary">
         <div class="container">
             <h2 class="section-title">¿Por Qué  elegir ARJACAR?</h2>
@@ -145,7 +151,7 @@
   </p>
 
 </div>
-
+<!-- Cards -->
             <div class="features-grid">
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-icon">
@@ -173,7 +179,7 @@
     </section>
 
 
-    <!-- section testimonios -->
+   <!-- =================== SECCIÓN TESTIMONIOS =================== -->
 <section id="reviews" class="reviews">
     <div class="container">
         <h2 class="section-title">Lo que dicen nuestros clientes</h2>
@@ -196,7 +202,7 @@
     </div>
 </section>
 
-    <!-- Contact Section - NUEVA SECCIÓN -->
+    <!-- =================== SECCIÓN CONTACTO =================== -->
     <section id="contact" class="contact" role="complementary">
         <div class="container">
             <h2 class="section-title">Contáctanos</h2>
@@ -224,6 +230,8 @@
                             <p>contacto@arjacar.mx</p>
                         </div>
                     </div>
+
+                    <!-- Redes sociales -->
                     <div class="social-links">
                         <a href="#" aria-label="Facebook" class="social-link">
                             <i class="fab fa-facebook" aria-hidden="true"></i>
@@ -236,6 +244,7 @@
                         </a>
                     </div>
                 </div>
+                <!-- Formulario de newsletter -->
                 <div class="contact-form">
                     <form class="newsletter-form" id="newsletterForm">
                         <h3>Suscríbete a nuestro newsletter</h3>
@@ -256,7 +265,7 @@
         </div>
     </section>
 
-    <!-- Shopping Cart Sidebar -->
+    <!-- =================== SIDEBAR DEL CARRITO =================== -->
     <div class="cart-sidebar" id="cartSidebar" role="dialog" aria-labelledby="cart-title" aria-modal="true">
         <div class="cart-header">
             <h3 id="cart-title">Carrito de Compras</h3>
@@ -265,7 +274,7 @@
             </button>
         </div>
         <div class="cart-items" id="cartItems" role="list">
-            <!-- Los artículos del carrito se generarán dinámicamente -->
+            <!-- Los artículos del carrito se insertan dinámicamente -->
         </div>
         <div class="cart-footer">
             <div class="cart-summary">
@@ -287,28 +296,27 @@
         </div>
     </div>
 
-    <!-- Cart Overlay -->
+    <!-- Fondo oscuro para el carrito -->
     <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
 
-    <!-- Quick View Modal - NUEVA FUNCIONALIDAD -->
+    <!-- Modo de vista rápida -->
     <div class="quick-view-modal" id="quickViewModal" role="dialog" aria-labelledby="quick-view-title" aria-modal="true" style="display: none;">
         <div class="modal-content">
             <button class="close-modal" id="closeQuickView" aria-label="Cerrar vista rápida">
                 <i class="fas fa-times" aria-hidden="true"></i>
             </button>
             <div class="quick-view-content" id="quickViewContent">
-                <!-- Contenido se genera dinámicamente -->
             </div>
         </div>
     </div>
 
-    <!-- Notification Container -->
+    <!-- =================== NOTIFICACIONES =================== -->
     <div class="notification-container" id="notificationContainer" role="alert" aria-live="polite"></div>
 
 
 
 <br>
-<!-- MAPA y UBICACION -->
+ <!-- =================== MAPA DE UBICACIÓN =================== -->
 <section id="ubicacion" class="location">
     <div class="container">
         <h2 class="section-title">Visita Nuestra Tienda</h2>
@@ -327,7 +335,7 @@
 </section>
 <br>
 
-
+<!-- =================== PREGUNTAS FRECUENTES =================== -->
 <section id="faq" class="faq">
     <div class="container">
         <h2 class="section-title">Preguntas Frecuentes</h2>
@@ -358,14 +366,14 @@
     </div>
 </section>
 
-    <!-- Footer -->
+    <!-- =================== PIE DE PÁGINA =================== -->
     <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
                          <img src="images/arjacar_logo_trans.png" alt="ARJACAR Logo" class="logo-img">
-                       <!--  <span>AJARCAR</span> -->
+        
                     </div>
                     <p>Tu destino para el mejor equipamiento deportivo premium. Elevamos tu rendimiento al siguiente nivel.</p>
                     <div class="social-links">
