@@ -5,7 +5,7 @@ class SportStore {
             {
                 id: 1,
                 name: "Tenis Running UltraBoost Pro",
-                price: 2,499.99,
+                price: 2499.99,
                 description: "Tenis de alto rendimiento con máxima amortiguación para correr cómodo.",
                 image: 'images/TenisRun.jpg',
                 //icon: "fas fa-running",
