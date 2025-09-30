@@ -1,3 +1,6 @@
+// ===============================
+// Clase principal de la tienda
+// ===============================
 class SportStore {
     constructor() {
         this.cart = this.loadCartFromStorage();
@@ -8,6 +11,7 @@ class SportStore {
                 price: 149.99,
                 description: "Tenis de alto rendimiento con máxima amortiguación para correr cómodo.",
                 image: 'images/TenisRun.jpg',
+                // Ícono opcional para el producto (no usado actualmente)
                 //icon: "fas fa-running",
                 stock: 15,
                 rating: 4.8
@@ -18,6 +22,7 @@ class SportStore {
                 price: 299.99,
                 description: "Set con mancuernas, bandas y accesorios para entrenar en casa de forma profesional.",
                 image: 'images/Pesas.jpg',
+                // Ícono opcional para el producto (no usado actualmente)
                 //icon: "fas fa-dumbbell",
                 stock: 8,
                 rating: 4.9
@@ -28,6 +33,7 @@ class SportStore {
                 price: 49.99,
                 description: "Balón profesional aprobado por FIFA, ideal para partidos y entrenamientos intensos.",
                 image: 'images/Balon.png',
+                // Ícono opcional para el producto (no usado actualmente)
                 //icon: "fas fa-futbol",
                 stock: 25,
                 rating: 4.7
@@ -38,6 +44,7 @@ class SportStore {
                 price: 179.99,
                 description: "Tenis de basketball con gran soporte, agarre y comodidad para cada jugada.",
                 image: 'images/TenisBasquet.png',
+                // Ícono opcional para el producto (no usado actualmente)
                 //icon: "fas fa-basketball-ball",
                 stock: 12,
                 rating: 4.6
@@ -48,6 +55,7 @@ class SportStore {
                 price: 199.99,
                 description: "Raqueta profesional de fibra de carbono, ligera y resistente para máximo control.",
                 image: 'images/Raqueta.png',
+                // Ícono opcional para el producto (no usado actualmente)
                 //icon: "fas fa-table-tennis",
                 stock: 6,
                 rating: 4.8
@@ -58,6 +66,7 @@ class SportStore {
                 price: 79.99,
                 description: "Esterilla premium antideslizante con correa y bloques para yoga y meditación.",
                 image: 'images/KitYoga.png',
+                // Ícono opcional para el producto (no usado actualmente)
                 //icon: "fas fa-spa",
                 stock: 20,
                 rating: 4.5
@@ -68,6 +77,7 @@ class SportStore {
                 price: 89.99,
                 description: "Creatina pura para mejorar fuerza, recuperación y rendimiento en tus entrenamientos.",
                 image: 'images/Creatina.png',
+                // Ícono opcional para el producto (no usado actualmente)
                 //icon: "fas fa-flask",
                 stock: 40,
                 rating: 5.0
@@ -78,6 +88,7 @@ class SportStore {
                 price: 59.99,
                 description: "Costal de boxeo duradero, ideal para entrenamientos intensos y mejorar tu técnica.",
                 image: 'images/CostalBox.jpg',
+                // Ícono opcional para el producto (no usado actualmente)
                 //icon: "fas fa-punching-bag",
                 stock: 5,
                 rating: 4.7
@@ -88,24 +99,28 @@ class SportStore {
                 price: 29.99,
                 description: "Guantes acolchados de alta calidad para máxima protección y comodidad en cada golpe.",
                 image: 'images/GuantesBox.jpg',
+                // Ícono opcional para el producto (no usado actualmente)
                 //icon: "fas fa-boxing-glove",
                 stock: 10,
                 rating: 4.9
             },
         ];
-        // Estado para búsqueda, orden y vista
+        // Estado para búsqueda, orden y vista de productos
         this.allProducts = [...this.products];
         this.state = {
-            query: '',
-            sort: 'default',
-            view: 'grid'
+            query: '', // Búsqueda
+            sort: 'default', // Orden
+            view: 'grid' // Vista
         };
         this.init();
     }
 
+    // ===============================
+    // Inicialización de la tienda
+    // ===============================
     init() {
         console.log('Inicializando SportZone...');
-        // Render inicial de productos con estado actual
+        // Renderiza productos y carrito al iniciar
         this.updateProductsView();
         this.updateCartDisplay();
         this.setupEventListeners();
@@ -114,7 +129,9 @@ class SportStore {
         console.log('SportZone inicializado correctamente');
     }
 
+    // ===============================
     // Normaliza texto quitando acentos para mejor búsqueda
+    // ===============================
     normalize(text) {
         return (text || '')
             .toString()
@@ -123,7 +140,9 @@ class SportStore {
             .toLowerCase();
     }
 
-    // Aplica búsqueda por nombre/descrición según estado.query
+    // ===============================
+    // Filtra productos por nombre o descripción según búsqueda
+    // ===============================
     getFilteredProducts() {
         const q = this.normalize(this.state.query);
         if (!q) return [...this.allProducts];
@@ -134,7 +153,9 @@ class SportStore {
         });
     }
 
-    // Ordena según estado.sort
+    // ===============================
+    // Ordena productos según el criterio seleccionado
+    // ===============================
     getSortedProducts(list) {
         const arr = [...list];
         switch (this.state.sort) {
@@ -145,7 +166,7 @@ class SportStore {
             case 'rating':
                 return arr.sort((a, b) => b.rating - a.rating);
             case 'popularity':
-                // Métrica simple: rating desc, luego stock desc
+                // Ordena por rating descendente y luego por stock descendente
                 return arr.sort((a, b) => (b.rating - a.rating) || (b.stock - a.stock));
             case 'default':
             default:
@@ -154,32 +175,41 @@ class SportStore {
         }
     }
 
+    // ===============================
+    // Actualiza la vista de productos según filtros y orden
+    // ===============================
     updateProductsView() {
         const filtered = this.getFilteredProducts();
         const sorted = this.getSortedProducts(filtered);
         this.renderProducts(sorted);
     }
 
+    // ===============================
+    // Renderiza la lista de productos en el DOM
+    // ===============================
     renderProducts(list) {
         const productsGrid = document.getElementById('productsGrid');
         if (!productsGrid) {
             console.error('Elemento productsGrid no encontrado');
             return;
         }
-        // Limpiar
+        // Limpia el contenedor de productos
         productsGrid.innerHTML = '';
-        // Render lista recibida o todo
+        // Renderiza la lista recibida o todos los productos
         const data = Array.isArray(list) ? list : this.allProducts;
         data.forEach((product, index) => {
             const productCard = this.createProductCard(product);
             productCard.style.animationDelay = `${index * 0.05}s`;
             productsGrid.appendChild(productCard);
         });
-        // Aplicar clase de vista
+        // Aplica la clase de vista (lista o grid)
         productsGrid.classList.toggle('list-view', this.state.view === 'list');
         console.log('Productos renderizados:', data.length);
     }
 
+    // ===============================
+    // Crea y retorna un elemento de tarjeta de producto
+    // ===============================
     createProductCard(product) {
         const card = document.createElement('div');
         card.className = 'product-card';
@@ -217,6 +247,9 @@ class SportStore {
         return card;
     }
 
+    // ===============================
+    // Genera el HTML para las estrellas de calificación
+    // ===============================
     generateStarRating(rating) {
         const fullStars = Math.floor(rating);
         const hasHalfStar = rating % 1 >= 0.5;
@@ -235,6 +268,9 @@ class SportStore {
         return `<div class="stars">${starsHTML}</div>`;
     }
 
+    // ===============================
+    // Retorna el texto de stock según la cantidad disponible
+    // ===============================
     getStockText(stock) {
         if (stock === 0) return '<span class="product-stock-text out-of-stock">Sin stock</span>';
         if (stock < 5) {
@@ -316,6 +352,9 @@ class SportStore {
         });
     }
 
+    // ===============================
+    // Renderiza los resultados de búsqueda en el contenedor indicado
+    // ===============================
     renderSearchResults(value, container) {
         if (!container) return;
         const q = this.normalize(value);
@@ -354,8 +393,9 @@ class SportStore {
             });
         });
     }
-
-    // ====== CARRITO ======
+    // ===============================
+    // CARRITO DE COMPRAS
+    // ===============================
     addToCart(productId) {
         console.log('Añadiendo al carrito:', productId);
         const product = this.products.find(p => p.id === parseInt(productId));
@@ -391,6 +431,9 @@ class SportStore {
         this.showNotification('Producto eliminado del carrito', 'success');
     }
 
+    // ===============================
+    // Actualiza el contador y total del carrito en el DOM
+    // ===============================
     updateCartDisplay() {
         const cartCount = document.getElementById('cartCount');
         const cartTotal = document.getElementById('cartTotal');
@@ -407,6 +450,9 @@ class SportStore {
         }
     }
 
+    // ===============================
+    // Renderiza los items del carrito en el DOM
+    // ===============================
     renderCartItems() {
         const cartItems = document.getElementById('cartItems');
         if (!cartItems) return;
@@ -434,6 +480,9 @@ class SportStore {
         });
     }
 
+    // ===============================
+    // Crea y retorna un elemento de item de carrito
+    // ===============================
     createCartItem(item) {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
@@ -468,6 +517,9 @@ class SportStore {
         return cartItem;
     }
 
+    // ===============================
+    // Muestra una notificación en la esquina superior derecha
+    // ===============================
     showNotification(message, type = 'success') {
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
@@ -510,6 +562,9 @@ class SportStore {
         }, 3000);
     }
 
+    // ===============================
+    // Guarda el carrito en el almacenamiento local
+    // ===============================
     saveCartToStorage() {
         try {
             localStorage.setItem('sportzone-cart', JSON.stringify(this.cart));
@@ -518,6 +573,9 @@ class SportStore {
         }
     }
 
+    // ===============================
+    // Carga el carrito desde el almacenamiento local
+    // ===============================
     loadCartFromStorage() {
         try {
             const saved = localStorage.getItem('sportzone-cart');
@@ -528,6 +586,9 @@ class SportStore {
         }
     }
 
+    // ===============================
+    // Configura los event listeners para la tienda
+    // ===============================
     setupEventListeners() {
         // Delegación de clics
         document.addEventListener('click', (e) => {
@@ -583,6 +644,9 @@ class SportStore {
         }
     }
 
+    // ===============================
+    // Actualiza la cantidad de un item en el carrito
+    // ===============================
     updateCartQuantity(productId, action) {
         const item = this.cart.find(item => item.id === parseInt(productId));
         if (!item) return;
@@ -603,6 +667,9 @@ class SportStore {
         this.renderCartItems();
     }
 
+    // ===============================
+    // Abre la sidebar del carrito
+    // ===============================
     openCart() {
         const cartSidebar = document.getElementById('cartSidebar');
         const cartOverlay = document.getElementById('cartOverlay');
@@ -615,6 +682,9 @@ class SportStore {
         }
     }
 
+    // ===============================
+    // Cierra la sidebar del carrito
+    // ===============================
     closeCart() {
         const cartSidebar = document.getElementById('cartSidebar');
         const cartOverlay = document.getElementById('cartOverlay');
@@ -626,6 +696,9 @@ class SportStore {
         }
     }
 
+    // ===============================
+    // Configura la navegación y menús
+    // ===============================
     setupNavigation() {
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -637,7 +710,7 @@ class SportStore {
             });
         }
 
-        // Close mobile menu when clicking nav links
+        // Cerrar menú móvil al hacer clic en los enlaces de navegación
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (hamburger && navMenu) {
@@ -647,7 +720,7 @@ class SportStore {
             });
         });
 
-        // Smooth scroll
+        // Scroll suave para anclas
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -660,7 +733,9 @@ class SportStore {
     }
 }
 
-// Initialize when DOM is ready
+// ===============================
+// Inicializa la tienda cuando el DOM está listo
+// ===============================
 document.addEventListener('DOMContentLoaded', () => {
     try {
         console.log('Inicializando SportZone...');
@@ -670,4 +745,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error inicializando SportZone:', error);
     }
 });
-
