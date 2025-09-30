@@ -669,7 +669,7 @@ body::before {
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: #ffffff;
     mix-blend-mode: luminosity;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55), 0 1px 0 #000;
     transition: color 0.3s;
@@ -677,7 +677,7 @@ body::before {
 
 /* Descripción del producto */
 .product-description {
-    color: #666;
+    color: #ffffff;
     margin-bottom: 1rem;
     line-height: 1.5;
     mix-blend-mode: luminosity;
@@ -689,7 +689,7 @@ body::before {
 .product-price {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #e74c3c;
+    color: #ffffff;
     margin-bottom: 1rem;
     mix-blend-mode: luminosity;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55), 0 1px 0 #000;
