@@ -464,6 +464,7 @@ class SportStore {
         }
         this.saveCartToStorage();
         this.updateCartDisplay();
+        this.renderCartItems();
         this.showNotification('Producto añadido al carrito', 'success');
     }
 
@@ -529,38 +530,38 @@ class SportStore {
     // Crea y retorna un elemento de item de carrito
     // ===============================
     createCartItem(item) {
-        const cartItem = document.createElement('div');
-        cartItem.className = 'cart-item';
-        
-        cartItem.innerHTML = `
-            <div class="cart-item-image">
-                ${item.icon ? `<i class="${item.icon}"></i>` : `<i class="fas fa-box"></i>`}
-            </div>
-            <div class="cart-item-info">
-                <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-details">
-                    <span class="cart-item-price">$${item.price.toFixed(2)}</span>
-                    <div class="quantity-controls">
-                        <button class="qty-btn minus" data-product-id="${item.id}" data-action="decrease">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <span class="quantity">${item.quantity}</span>
-                        <button class="qty-btn plus" data-product-id="${item.id}" data-action="increase">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="cart-item-total">
-                    Subtotal: $${(item.price * item.quantity).toFixed(2)}
+    const cartItem = document.createElement('div');
+    cartItem.className = 'cart-item';
+    
+    cartItem.innerHTML = `
+        <div class="cart-item-image">
+            ${item.image ? `<img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">` : `<i class="fas fa-box"></i>`}
+        </div>
+        <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-details">
+                <span class="cart-item-price">$${item.price.toFixed(2)}</span>
+                <div class="quantity-controls">
+                    <button class="qty-btn minus" data-product-id="${item.id}" data-action="decrease">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="qty-btn plus" data-product-id="${item.id}" data-action="increase">
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
             </div>
-            <button class="remove-item" data-product-id="${item.id}">
-                <i class="fas fa-trash"></i>
-            </button>
-        `;
-        
-        return cartItem;
-    }
+            <div class="cart-item-total">
+                Subtotal: $${(item.price * item.quantity).toFixed(2)}
+            </div>
+        </div>
+        <button class="remove-item" data-product-id="${item.id}">
+            <i class="fas fa-trash"></i>
+        </button>
+    `;
+    
+    return cartItem;
+}
 
     // ===============================
     // Muestra una notificación en la esquina superior derecha
