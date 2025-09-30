@@ -15,8 +15,10 @@
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
 </head>
 <body>
-    <!-- ================== ENCABEZADO Y NAVEGACIÓN ================== -->
-    <header class="header" role="banner">
+    <!-- Wrapper para el contenido principal -->
+    <div class="main-content">
+        <!-- ================== ENCABEZADO Y NAVEGACIÓN ================== -->
+        <header class="header" role="banner">
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
                 <!-- Nuestro logo  -->
@@ -57,25 +59,46 @@
     </header>
 
    
+<!-- =================== SECCIÓN HERO =================== -->
+<section id="home" class="hero" role="banner">
+  <!-- Video de fondo -->
+  <video class="hero-video" src="images/Corredora.mp4" autoplay muted loop playsinline preload="auto" poster="images/Corredora-poster.jpg"></video>
 
-   <!-- =================== SECCIÓN HERO =================== -->
-    <section id="home" class="hero" role="banner">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Eleva Tu Juego</h1>
-                <p class="hero-subtitle">Equipamiento deportivo premium para campeones. Descubre el equipo que llevará tu rendimiento al siguiente nivel.</p>
-                <button class="cta-button" aria-label="Ir a productos destacados">
-                    <span>Comprar Ahora</span>
-                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="hero-image">
-                <div class="hero-graphic">
-                    <i class="fas fa-running" aria-hidden="true"></i>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">Eleva Tu Juego</h1>
+      <p class="hero-subtitle">Equipamiento deportivo premium para campeones. Descubre el equipo que llevará tu rendimiento al siguiente nivel.</p>
+      <button class="cta-button" aria-label="Ir a productos destacados">
+        <span>Comprar Ahora</span>
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</section>
+<!-- =================== SECCIÓN VIDEO =================== -->
+<section id="promo-video" class="video-section" aria-labelledby="promo-video-title">
+  <div class="container video-container">
+    <!--<div class="video-content">
+      <h2 id="promo-video-title" class="section-title">Mira nuestro equipo en acción</h2>
+    </div>-->
+
+    <div class="video-wrapper">
+      <video
+        class="inline-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="images/Corredora-poster.jpg">
+        <source src="images/promo-video.mp4" type="video/mp4" />
+        <!-- Subtítulos opcionales -->
+        <!-- <track kind="captions" srclang="es" src="captions/demostracion-es.vtt" label="Español" default /> -->
+        Tu navegador no soporta video HTML5.
+      </video>
+    </div>
+  </div>
+</section>
 
      <!-- =================== SECCIÓN PRODUCTOS =================== -->
     <section id="products" class="products" role="main">
@@ -215,15 +238,6 @@
     </figcaption>
   </figure>
 
-  <figure class="snip1533">
-    <figcaption>
-      <blockquote>
-        <p>"Ya he comprado varias veces y siempre quedo satisfecho. La calidad de los productos es indiscutible. ARJACAR es mi tienda de confianza."</p>
-      </blockquote>
-      <div class="review-rating">★★★★★</div>
-      <h3>David Martínez</h3>
-    </figcaption>
-  </figure>
 </div>
 <!--Final Reviews-->
 
@@ -378,7 +392,6 @@
         </div>
     </div>
 </section>
-<br>
 
 <!-- =================== PREGUNTAS FRECUENTES =================== -->
 <section id="faq" class="faq">
@@ -386,30 +399,47 @@
         <h2 class="section-title">Preguntas Frecuentes</h2>
         <div class="faq-list">
             <details class="faq-item">
-                <summary>¿Cuánto tarda el envío?</summary>
-                <p>Los envíos tardan de 3 a 5 días hábiles dentro de la República Mexicana.</p>
+                <summary>
+                    <i class="fas fa-shipping-fast"></i>
+                    ¿Cuánto tarda el envío?
+                </summary>
+                <p>Los envíos tardan de 3 a 5 días hábiles dentro de la República Mexicana. Para pedidos urgentes, ofrecemos envío express de 24-48 horas con costo adicional.</p>
             </details>
             <details class="faq-item">
-                <summary>¿Aceptan devoluciones?</summary>
-                <p>Sí, aceptamos devoluciones dentro de los primeros 30 días.</p>
+                <summary>
+                    <i class="fas fa-undo-alt"></i>
+                    ¿Aceptan devoluciones?
+                </summary>
+                <p>Sí, aceptamos devoluciones dentro de los primeros 30 días. Los productos deben estar en condiciones originales y con su empaque. Los gastos de envío de devolución corren por cuenta del cliente.</p>
             </details>
             <details class="faq-item">
-                <summary>¿Qué métodos de pago aceptan?</summary>
-                <p>Aceptamos tarjetas de crédito, débito, PayPal y transferencias bancarias.</p>
+                <summary>
+                    <i class="fas fa-credit-card"></i>
+                    ¿Qué métodos de pago aceptan?
+                </summary>
+                <p>Aceptamos tarjetas de crédito, débito, PayPal, transferencias bancarias y pagos en efectivo al recoger en tienda. Todos los pagos en línea son seguros y encriptados.</p>
             </details>
 
             <details class="faq-item">
-                <summary>¿Los productos tienen garantía?</summary>
-                <p>Todos nuestros productos cuentan con garantía del fabricante. El periodo de garantía varía según la marca y tipo de producto, generalmente entre 6 meses y 2 años.</p>
+                <summary>
+                    <i class="fas fa-shield-alt"></i>
+                    ¿Los productos tienen garantía?
+                </summary>
+                <p>Todos nuestros productos cuentan con garantía del fabricante. El periodo de garantía varía según la marca y tipo de producto, generalmente entre 6 meses y 2 años. Además, ofrecemos servicio técnico especializado.</p>
             </details>
 
             <details class="faq-item">
-                <summary>¿Puedo recoger mi pedido en tienda?</summary>
-                <p>Sí, ofrecemos la opción de recoger tu pedido en nuestra tienda física en Ciudad de México sin costo adicional. Recibirás una notificación cuando tu pedido esté listo para recoger.</p>
+                <summary>
+                    <i class="fas fa-store"></i>
+                    ¿Puedo recoger mi pedido en tienda?
+                </summary>
+                <p>Sí, ofrecemos la opción de recoger tu pedido en nuestra tienda física en Ciudad de México sin costo adicional. Recibirás una notificación cuando tu pedido esté listo para recoger. Horario: Lun-Vie 9:00-19:00, Sáb 9:00-17:00.</p>
             </details>
         </div>
     </div>
 </section>
+    </div>
+    <!-- Fin del wrapper main-content -->
 
     <!-- =================== PIE DE PÁGINA =================== -->
     <footer class="footer" role="contentinfo">
