@@ -5,7 +5,7 @@ class SportStore {
             {
                 id: 1,
                 name: "Tenis Running UltraBoost Pro",
-                price: 149.99,
+                price: 2499.99,
                 description: "Tenis de alto rendimiento con máxima amortiguación para correr cómodo.",
                 image: 'images/TenisRun.jpg',
                 //icon: "fas fa-running",
@@ -15,7 +15,7 @@ class SportStore {
             {
                 id: 2,
                 name: "Kit Pesas Premium Completo",
-                price: 299.99,
+                price: 3999.99,
                 description: "Set con mancuernas, bandas y accesorios para entrenar en casa de forma profesional.",
                 image: 'images/Pesas.jpg',
                 //icon: "fas fa-dumbbell",
@@ -25,7 +25,7 @@ class SportStore {
             {
                 id: 3,
                 name: "Balón Fútbol Pro FIFA",
-                price: 49.99,
+                price: 999.99,
                 description: "Balón profesional aprobado por FIFA, ideal para partidos y entrenamientos intensos.",
                 image: 'images/Balon.png',
                 //icon: "fas fa-futbol",
@@ -35,7 +35,7 @@ class SportStore {
             {
                 id: 4,
                 name: "Tenis Max Basketball",
-                price: 179.99,
+                price: 3499.99,
                 description: "Tenis de basketball con gran soporte, agarre y comodidad para cada jugada.",
                 image: 'images/TenisBasquet.png',
                 //icon: "fas fa-basketball-ball",
@@ -45,7 +45,7 @@ class SportStore {
             {
                 id: 5,
                 name: "Raqueta Tenis Carbon Pro",
-                price: 199.99,
+                price: 1499.99,
                 description: "Raqueta profesional de fibra de carbono, ligera y resistente para máximo control.",
                 image: 'images/Raqueta.png',
                 //icon: "fas fa-table-tennis",
@@ -55,7 +55,7 @@ class SportStore {
             {
                 id: 6,
                 name: "Esterilla Yoga + Accesorios",
-                price: 79.99,
+                price: 2999.99,
                 description: "Esterilla premium antideslizante con correa y bloques para yoga y meditación.",
                 image: 'images/KitYoga.png',
                 //icon: "fas fa-spa",
@@ -65,7 +65,7 @@ class SportStore {
             {
                 id: 7,
                 name: "Creatina Monohidratada 300g",
-                price: 89.99,
+                price: 799.99,
                 description: "Creatina pura para mejorar fuerza, recuperación y rendimiento en tus entrenamientos.",
                 image: 'images/Creatina.png',
                 //icon: "fas fa-flask",
@@ -75,7 +75,7 @@ class SportStore {
             {
                 id: 8,
                 name: "Costal Boxeo Pro Resistente",
-                price: 59.99,
+                price: 1249.99,
                 description: "Costal de boxeo duradero, ideal para entrenamientos intensos y mejorar tu técnica.",
                 image: 'images/CostalBox.jpg',
                 //icon: "fas fa-punching-bag",
@@ -85,7 +85,7 @@ class SportStore {
             {
                 id: 9,
                 name: "Guantes Boxeo Pro Comfort",
-                price: 29.99,
+                price: 1099.99,
                 description: "Guantes acolchados de alta calidad para máxima protección y comodidad en cada golpe.",
                 image: 'images/GuantesBox.jpg',
                 //icon: "fas fa-boxing-glove",
