@@ -1,6 +1,31 @@
+/* ESTRUCTURA PRINCIPAL
+*  1) Constructor, productos y renderizado
+*  Inicialización del estado y array de productos
+*  Sistema de renderizado dinámico en el DOM
+*  Generación de cards con ratings y stock
+* 
+* 2) Búsqueda y filtros en el catálogo
+* Búsqueda inteligente con normalización (sin acentos)
+* Ordenamiento por precio, rating, popularidad
+* Vista grid/list y sugerencias en tiempo real
+* 
+* 3) Carrito de compras y navegación
+*  Gestión de productos: añadir, quitar, actualizar cantidad
+*  Persistencia con LocalStorage
+*  Sidebar animado y notificaciones
+*/
+
 // ===============================
-// Clase principal de la tienda
+// SECCIÓN 1: CONSTRUCTOR, PRODUCTOS Y RENDERIZADO
 // ===============================
+/*
+ * Array de 9 productos con propiedades completas (id, name, price, etc.)
+ * Carga automática del carrito desde LocalStorage al iniciar
+ * Estado centralizado para búsqueda, orden y vista (grid/list)
+ * Renderizado dinámico de productos en el DOM con animaciones
+ * Sistema de calificación con estrellas
+ * Indicadores de stock con alertas visuales
+ */
 class SportStore {
     constructor() {
         this.cart = this.loadCartFromStorage();
@@ -116,17 +141,17 @@ class SportStore {
     }
 
     // ===============================
-    // Inicialización de la tienda
+    // Inicialización de la tienda: renderiza productos, configura eventos
     // ===============================
     init() {
-        console.log('Inicializando SportZone...');
+        console.log('Inicializando Arjacar...');
         // Renderiza productos y carrito al iniciar
         this.updateProductsView();
         this.updateCartDisplay();
         this.setupEventListeners();
         this.setupNavigation();
         this.setupSearchAndFilters();
-        console.log('SportZone inicializado correctamente');
+        console.log('Arjacar inicializado correctamente');
     }
 
     // ===============================
@@ -282,7 +307,15 @@ class SportStore {
         return `<span class="product-stock-text in-stock">${stock} disponibles</span>`;
     }
 
-    // ====== BÚSQUEDA Y FILTROS ======
+    // ====== SECCIÓN 2: BÚSQUEDA Y FILTROS CATÁLOGO ======
+    /*
+     * Búsqueda con normalización de texto (elimina acentos)
+     * Filtrado en tiempo real por nombre y descripción
+     * Ordenamiento múltiple: precio, rating, popularidad, relevancia
+     * Sugerencias de búsqueda (máximo 5 resultados)
+     * Vista alternativa: grid y list (toggle button)
+     * Eventos: input, keydown (Enter), click outside
+     */
     setupSearchAndFilters() {
         const searchInput = document.getElementById('smartSearchInput');
         const clearBtn = document.getElementById('clearSearch');
@@ -394,8 +427,17 @@ class SportStore {
         });
     }
     // ===============================
-    // CARRITO DE COMPRAS
+    // SECCIÓN 3: CARRITO DE COMPRAS Y NAVEGACIÓN
     // ===============================
+    /*
+     * Agregar productos: verifica stock y evita duplicados
+     * Eliminar productos: confirmación visual con notificación
+     * Actualizar cantidad: botones +/- con validación de stock
+     * Persistencia: guarda/carga automáticamente en LocalStorage
+     * Sidebar animado desde la derecha con overlay
+     * Notificaciones animadas (éxito/error) con auto-dismiss
+     * Navegación: menú hamburguesa, smooth scroll, cierre automático
+     */
     addToCart(productId) {
         console.log('Añadiendo al carrito:', productId);
         const product = this.products.find(p => p.id === parseInt(productId));
@@ -738,10 +780,10 @@ class SportStore {
 // ===============================
 document.addEventListener('DOMContentLoaded', () => {
     try {
-        console.log('Inicializando SportZone...');
+        console.log('Inicializando Arjacar...');
         window.store = new SportStore();
-        console.log('SportZone inicializado exitosamente!');
+        console.log('Arjacar inicializado exitosamente!');
     } catch (error) {
-        console.error('Error inicializando SportZone:', error);
+        console.error('Error inicializando Arjacar:', error);
     }
 });
