@@ -1,4 +1,5 @@
-/* ESTRUCTURA PRINCIPAL
+/* ESTRUCTURA PRINCIPAL 
+
 *  1) Constructor, productos y renderizado
 *  Inicialización del estado y array de productos
 *  Sistema de renderizado dinámico en el DOM
@@ -13,7 +14,9 @@
 *  Gestión de productos: añadir, quitar, actualizar cantidad
 *  Persistencia con LocalStorage
 *  Sidebar animado y notificaciones
+*
 */
+
 
 // ===============================
 // SECCIÓN 1: CONSTRUCTOR, PRODUCTOS Y RENDERIZADO
