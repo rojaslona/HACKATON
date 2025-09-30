@@ -1,10 +1,29 @@
-/* Reset and Base Styles */
+/* =====================================================
+   CSS ORGANIZADO PARA ARJACAR - EQUIPAMIENTO DEPORTIVO
+   ESTRUCTURA: Sigue el orden del HTML exactamente
+   ===================================================== */
+
+/* =====================================================
+   1. RESET Y ESTILOS BASE
+   ===================================================== */
+
+/* Reset universal para eliminar estilos por defecto */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Configuración HTML base */
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Estilos base del documento */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -13,32 +32,15 @@ body {
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     position: relative;
-    margin: 0; /* Sin márgenes */
-    padding: 0; /* Sin padding */
-    min-height: 100vh; /* Altura mínima de la ventana */
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden; /* Evita scroll horizontal */
-}
-
-/* Wrapper para el contenido principal */
-.main-content {
-    flex: 1; /* Toma todo el espacio disponible */
-}
-
-/* Asegurar que todas las secciones excepto footer usen el fondo del body */
-.hero, .products, .about, .reviews, .location, .faq, .contact {
-    background-attachment: local;
-}
-
-html {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow-x: hidden; /* Evita scroll horizontal por el footer expandido */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 }
 
-/* Animación sutil de fondo deportivo */
+/* Fondo animado sutil con partículas deportivas */
 body::before {
     content: '';
     position: fixed;
@@ -54,13 +56,45 @@ body::before {
     animation: floatBubbles 20s ease-in-out infinite;
 }
 
+/* Wrapper principal del contenido */
+.main-content {
+    flex: 1;
+}
+
+/* Configuración de fondo para secciones principales */
+.hero, .products, .about, .reviews, .location, .faq, .contact {
+    background-attachment: local;
+}
+
+/* Container genérico reutilizable */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Header Styles */
+/* Títulos de sección base */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+}
+
+/* Logo de la empresa */
+.logo-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 25%;
+    object-fit: contain;
+    display: block;
+}
+
+/* =====================================================
+   2. HEADER Y NAVEGACIÓN
+   ===================================================== */
+
+/* Header principal fijo */
 .header {
     position: fixed;
     top: 0;
@@ -72,6 +106,7 @@ body::before {
     transition: all 0.3s ease;
 }
 
+/* Contenedor de la navegación */
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -81,6 +116,7 @@ body::before {
     align-items: center;
 }
 
+/* Logo de navegación */
 .nav-logo {
     display: flex;
     align-items: center;
@@ -94,12 +130,14 @@ body::before {
     font-size: 1.8rem;
 }
 
+/* Menú principal de navegación */
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 2rem;
 }
 
+/* Enlaces del menú */
 .nav-link {
     text-decoration: none;
     color: #333;
@@ -111,10 +149,12 @@ body::before {
     color: #e74c3c;
 }
 
+/* Contenedor del carrito */
 .cart-container {
     position: relative;
 }
 
+/* Botón del carrito de compras */
 .cart-btn {
     background: #e74c3c;
     color: white;
@@ -134,6 +174,7 @@ body::before {
     transform: translateY(-2px);
 }
 
+/* Contador de productos en el carrito */
 .cart-count {
     background: #fff;
     color: #e74c3c;
@@ -151,12 +192,14 @@ body::before {
     animation: pulse 2s infinite;
 }
 
+/* Menú hamburguesa para móviles */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
 }
 
+/* Barras del menú hamburguesa */
 .bar {
     width: 25px;
     height: 3px;
@@ -164,78 +207,79 @@ body::before {
     margin: 3px 0;
     transition: 0.3s;
 }
-/* Hero Section */
-.hero {
-  /* Mantén estas propiedades */
-  color: white;
-  padding: 120px 0 80px;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
 
-  /* Elimina el background con gradiente y la url del mp4 */
-  /* background: ...; */
-  /* background-attachment: fixed; */
+/* =====================================================
+   3. SECCIÓN HERO - PÁGINA PRINCIPAL
+   ===================================================== */
+
+/* Sección Hero con video de fondo */
+.hero {
+    color: white;
+    padding: 120px 0 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Video de fondo ocupando toda la sección */
 .hero-video {
-  position: absolute;
-  inset: 0;            /* top:0; right:0; bottom:0; left:0; */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* hace que el video cubra todo, recortando lo necesario */
-  z-index: 0;
-  pointer-events: none; /* permite hacer clic en los botones encima */
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
 }
 
-/* Capa uniforme opcional (NO es degradado) para mejorar legibilidad */
+/* Capa oscura para mejorar legibilidad del texto */
 .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35); /* Ajusta opacidad según tu video */
-  z-index: 1;
-  pointer-events: none;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+    pointer-events: none;
 }
 
-/* Quita el degradado animado anterior */
-.hero::after { content: none; }
-
-/* Contenido por encima del video */
+/* Contenedor del contenido Hero */
 .hero-container {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-
-  /* Puedes mantener el grid si quieres, o simplificar a una sola columna */
-  display: grid;
-  grid-template-columns: 1fr; /* antes 1fr 1fr; al quitar el icono, una columna suele verse mejor */
-  gap: 4rem;
-  align-items: center;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
 }
 
-.hero-content { animation: slideInLeft 1s ease; }
+/* Contenido principal con animación */
+.hero-content { 
+    animation: slideInLeft 1s ease; 
+}
 
+/* Título principal de la página */
 .hero-title {
-  font-size: 3.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-  /* Mejora legibilidad sin degradado: */
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
+/* Subtítulo descriptivo */
 .hero-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  opacity: 0.95;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
+
+/* Botón de llamada a la acción */
 .cta-button {
     background: #e74c3c;
     color: white;
@@ -256,57 +300,316 @@ body::before {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* =====================================================
+   4. SECCIÓN VIDEO PROMOCIONAL
+   ===================================================== */
 
-.hero-image,
-.hero-graphic { display: none !important; }
-
-/* Responsive */
-@media (max-width: 480px) {
-  .hero-title { font-size: 2rem; }
-  .hero-subtitle { font-size: 1rem; }
-}
-/* Full-screen (ancho y alto completos) */
+/* Sección de video a pantalla completa */
 .video-section {
-  padding: 0;                /* sin márgenes alrededor */
+    padding: 0;
 }
 
+/* Contenedor del video sin restricciones */
 .video-container {
-  max-width: none;           /* libera el ancho total de la ventana */
-  padding: 0;
+    max-width: none;
+    padding: 0;
 }
 
+/* Wrapper del video a pantalla completa */
 .video-wrapper {
-  width: 100vw;              /* ancho completo de la ventana */
-  height: 100dvh;            /* alto completo de la ventana (mejor que 100vh en móviles) */
-  aspect-ratio: auto;        /* desactiva la restricción 16:9 */
-  border-radius: 0;          /* opcional: sin bordes redondeados para full-bleed */
-  box-shadow: none;          /* opcional: sin sombra */
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+    border-radius: 0;
+    box-shadow: none;
 }
 
+/* Video inline responsivo */
 .inline-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;         /* rellena, recortando lo necesario */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-/* Products Section */
+
+/* =====================================================
+   5. SECCIÓN PRODUCTOS
+   ===================================================== */
+
+/* Sección principal de productos */
 .products {
     padding: 80px 0;
-    background: white;
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgb(215, 8, 8) 0%,
+        rgba(55, 138, 221, 0.98) 25%,
+        rgba(231, 76, 60, 0.02) 50%,
+        rgba(212, 61, 6, 0.98) 75%,
+        rgba(55, 138, 221, 0.98) 100%);
+    background-size: 200% 200%;
+    animation: backgroundShift 12s ease-in-out infinite;
+    overflow: hidden;
+    z-index: 0;
 }
 
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+/* Eleva el contenido por encima del fondo animado */
+.products .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Buscador inteligente de productos */
+.smart-search-container {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.smart-search-input {
+    width: 100%;
+    padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+    border: 2px solid rgba(231, 76, 60, 0.2);
+    border-radius: 50px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.smart-search-input:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1), 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Ícono de búsqueda */
+.search-icon {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e74c3c;
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
+/* Botón para limpiar búsqueda */
+.clear-search {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(231, 76, 60, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color: #e74c3c;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-search:hover {
+    background: #e74c3c;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Resultados de búsqueda (dropdown) */
+.search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: 20;
+}
+
+.search-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.search-result-item:hover {
+    background: #f8f9fa;
+}
+
+.search-result-item small {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.no-results {
+    padding: 0.75rem 1rem;
+    color: #666;
+}
+
+/* Controles de productos (ordenar y vista) */
+.product-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.8s ease;
+}
+
+/* Fondo animado de controles */
+.product-controls::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(231, 76, 60, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.05) 0%, transparent 30%);
+    animation: particleFloat 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Gradiente decorativo superior */
+.product-controls::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #e74c3c, #3498db, #2ecc71, #9b59b6, #e74c3c);
+    background-size: 200% 100%;
+    animation: gradientMove 3s ease-in-out infinite;
+    z-index: 2;
+}
+
+.product-controls > * {
+    position: relative;
+    z-index: 3;
+}
+
+/* Controles de ordenamiento */
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sort-controls label {
+    font-weight: 600;
     color: #333;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
 }
 
+.sort-select {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid rgba(231, 76, 60, 0.2);
+    border-radius: 12px;
+    background: white;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sort-select:hover {
+    border-color: #e74c3c;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
+    transform: translateY(-2px);
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* Controles de vista (grid/lista) */
+.view-controls {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 0.5rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.view-btn:hover {
+    color: #e74c3c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+}
+
+.view-btn.active {
+    background: #e74c3c;
+    color: white;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+    transform: scale(1.05);
+}
+
+/* Grid de productos */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    position: relative;
+    padding: 2rem 0;
 }
 
+/* Vista en lista */
+.products-grid.list-view {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+/* Tarjeta individual de producto */
 .product-card {
     background: white;
     border-radius: 15px;
@@ -323,6 +626,14 @@ body::before {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
+/* Animación de carga de productos */
+.product-card.loading {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Imagen del producto */
 .product-image {
     width: 100%;
     height: 200px;
@@ -341,26 +652,83 @@ body::before {
     transform: scale(1.05);
 }
 
+/* Imagen real del producto con filtros */
+.product-img {
+    filter: grayscale(30%) saturate(0.7);
+    opacity: 0.85;
+    transition: filter 0.4s, opacity 0.4s;
+}
+
+.product-card:hover .product-img {
+    filter: grayscale(0%) saturate(1.3);
+    opacity: 1;
+}
+
+/* Nombre del producto */
 .product-name {
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: #333;
+    mix-blend-mode: luminosity;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55), 0 1px 0 #000;
+    transition: color 0.3s;
 }
 
+/* Descripción del producto */
 .product-description {
     color: #666;
     margin-bottom: 1rem;
     line-height: 1.5;
+    mix-blend-mode: luminosity;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55), 0 1px 0 #000;
+    transition: color 0.3s;
 }
 
+/* Precio del producto */
 .product-price {
     font-size: 1.5rem;
     font-weight: bold;
     color: #e74c3c;
     margin-bottom: 1rem;
+    mix-blend-mode: luminosity;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55), 0 1px 0 #000;
+    transition: color 0.3s;
 }
 
+/* Stock del producto */
+.product-stock {
+    mix-blend-mode: luminosity;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55), 0 1px 0 #000;
+    transition: color 0.3s;
+}
+
+/* Estrellas de calificación */
+.stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 0.2rem;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+.stars i {
+    font-size: 1.1rem;
+    color: #ffd700;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    mix-blend-mode: normal;
+}
+
+.rating-text {
+    margin-left: 0.4rem;
+    font-size: 0.95rem;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+    mix-blend-mode: luminosity;
+}
+
+/* Botón agregar al carrito */
 .add-to-cart-btn {
     width: 100%;
     padding: 0.8rem;
@@ -383,7 +751,99 @@ body::before {
     transform: scale(0.95);
 }
 
-/* About Section */
+/* Animación del botón carrito */
+.cart-animation {
+    animation: addToCartAnimation 0.3s ease;
+}
+
+/* Loading de productos */
+.products-loading {
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgba(231, 76, 60, 0.05) 0%, 
+        rgba(52, 152, 219, 0.05) 25%,
+        rgba(46, 204, 113, 0.05) 50%,
+        rgba(155, 89, 182, 0.05) 75%,
+        rgba(231, 76, 60, 0.05) 100%);
+    border-radius: 20px;
+    margin: 2rem 0;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(231, 76, 60, 0.1);
+}
+
+.products-loading > * {
+    position: relative;
+    z-index: 3;
+}
+
+/* Spinner de carga */
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 2rem;
+    border: 4px solid rgba(231, 76, 60, 0.2);
+    border-top: 4px solid #e74c3c;
+    border-radius: 50%;
+    animation: spin 1s linear infinite, pulseSpinner 2s ease-in-out infinite;
+    box-shadow: 
+        0 0 20px rgba(231, 76, 60, 0.3),
+        inset 0 0 20px rgba(231, 76, 60, 0.1);
+}
+
+.products-loading p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    animation: textPulse 3s ease-in-out infinite;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón cargar más productos */
+.load-more-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.load-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+}
+
+.load-more-btn i {
+    transition: transform 0.3s ease;
+}
+
+.load-more-btn:hover i {
+    transform: translateY(3px);
+}
+
+/* =====================================================
+   6. SECCIÓN SOBRE NOSOTROS
+   ===================================================== */
+
+/* Sección principal About */
 .about {
     padding: 80px 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e74c3c 100%);
@@ -391,13 +851,24 @@ body::before {
     overflow: hidden;
 }
 
-/* Contenedor del about con z-index para estar por encima de las partículas */
+/* Contenedor elevado sobre fondo animado */
 .about .container {
     position: relative;
     z-index: 10;
 }
 
-/* Estilo mejorado para el párrafo introductorio */
+/* Título de la sección About */
+.about .section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Párrafo introductorio estilizado */
 .about-intro {
     max-width: 900px;
     margin: 0 auto 4rem;
@@ -421,17 +892,7 @@ body::before {
     margin: 0;
 }
 
-/* Título de sección mejorado */
-.about .section-title {
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
-    margin-bottom: 3rem;
-    position: relative;
-    z-index: 10;
-}
-
+/* Grid de características/features */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -440,6 +901,7 @@ body::before {
     z-index: 10;
 }
 
+/* Tarjeta individual de característica */
 .feature-card {
     background: rgba(255, 255, 255, 0.95);
     padding: 2.5rem 2rem;
@@ -459,12 +921,78 @@ body::before {
     background: rgba(255, 255, 255, 0.98);
 }
 
+/* Ícono de característica */
+.feature-card i,
+.feature-icon i {
+    font-size: 3.5rem;
+    color: #e74c3c;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
+}
+
+/* Título de característica */
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: #333;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Descripción de característica */
+.feature-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+/* =====================================================
+   7. SECCIÓN TESTIMONIOS/REVIEWS
+   ===================================================== */
+
+/* Sección principal de reviews */
+.reviews {
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e74c3c 100%);
+    color: white;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Contenedor específico para reviews sin márgenes */
+.reviews .container {
+    max-width: none;
+    margin: 0;
+    padding: 80px 20px 100px 20px;
+    width: 100%;
+}
+
+/* Título de la sección reviews */
+.reviews .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Grid de reviews para ocupar todo el ancho */
+.reviews-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+/* Tarjeta individual de testimonios */
 .snip1533 {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     color: #eaeaea;
     display: inline-block;
     font-size: 19px;
-    margin: 0; /* Eliminamos márgenes para que el grid controle el espaciado */
+    margin: 0;
     max-width: 370px;
     min-width: 250px;
     position: relative;
@@ -474,7 +1002,7 @@ body::before {
     border-radius: 10px;
     border-top: 5px solid #f6f6f6;
     transition: all 0.3s ease-in-out;
-    flex: 1 1 auto; /* Permite que las tarjetas se ajusten en el flexbox */
+    flex: 1 1 auto;
 }
 
 .snip1533 *,
@@ -483,19 +1011,21 @@ body::before {
     box-sizing: border-box;
     -webkit-transition: all 0.1s ease-out;
     transition: all 0.1s ease-out;
-
 }
 
+/* Efecto hover en tarjetas de review */
 .snip1533:hover {
-    transform: translateY(-5px); /* que suba un poquito */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* sombra más fuerte */
-    background-color: #d94b3e; /* un poquito más oscuro */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background-color: #d94b3e;
 }
 
+/* Contenido del testimonio */
 .snip1533 figcaption {
     padding: 13% 10% 12%;
 }
 
+/* Ícono decorativo del review */
 .snip1533 figcaption:before {
     webkit-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -512,57 +1042,45 @@ body::before {
     position: absolute;
     top: -30px;
     width: 60px;
-
 }
 
+/* Nombre del cliente en review */
 .snip1533 h3 {
     color: #f8f8f8;
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
     margin: 10px 0 5px;
-    
 }
 
+/* Información adicional del cliente */
 .snip1533 h4 {
     font-weight: 400;
     margin: 0;
     opacity: 0.5;
 }
 
+/* Cita del testimonio */
 .snip1533 blockquote {
     font-style: italic;
     font-weight: 300;
     margin: 0 0 20px;
 }
 
-
-
-/*Fin Reviews CSS*/
-
-.feature-card i {
-    font-size: 3.5rem;
-    color: #e74c3c;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
+/* Calificación con estrellas */
+.review-rating {
+    color: #ffd700;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.feature-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.2rem;
-    color: #333;
-    font-weight: bold;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-}
+/* =====================================================
+   8. SIDEBAR CARRITO DE COMPRAS
+   ===================================================== */
 
-.feature-card p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
-}
-
-/* Cart Sidebar */
+/* Panel lateral deslizante que muestra los productos agregados al carrito
+   Se activa desde el icono del carrito en la navegación */
 .cart-sidebar {
     position: fixed;
     top: 0;
@@ -708,9 +1226,9 @@ body::before {
     color: #666;
 }
 
-/* ===========================================
-   CONTACT SECTION STYLES
-   =========================================== */
+/* =====================================================
+   9. SECCIÓN CONTACTO
+   ===================================================== */
 
 .contact {
     padding: 80px 0;
@@ -898,19 +1416,333 @@ body::before {
     transform: scale(1.05);
 }
 
-/* ===========================================
-   FOOTER STYLES - MEJORADO
-   =========================================== */
+/* =====================================================
+   10. SECCIÓN UBICACIÓN
+   ===================================================== */
 
+/* Sección donde mostramos la ubicación física de nuestras tiendas
+   Incluye mapa integrado y información de contacto */
+.location {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e74c3c 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo con partículas sutiles para ubicación */
+.location::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(231, 76, 60, 0.04) 0%, transparent 30%),
+        radial-gradient(circle at 85% 30%, rgba(52, 152, 219, 0.04) 0%, transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(46, 204, 113, 0.04) 0%, transparent 25%),
+        radial-gradient(circle at 25% 70%, rgba(155, 89, 182, 0.04) 0%, transparent 20%);
+    animation: locationFloat 20s ease-in-out infinite;
+    z-index: 1;
+}
+
+.location .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Título de la sección ubicación */
+.location .section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.location .section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #e74c3c, #3498db);
+    border-radius: 2px;
+}
+
+/* Contenedor del mapa interactivo */
+.map-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 50%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 25px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 10px 25px rgba(0, 0, 0, 0.1);
+    background: white;
+    border: 3px solid rgba(231, 76, 60, 0.1);
+    transition: all 0.3s ease;
+    animation: mapFloat 6s ease-in-out infinite;
+}
+
+.map-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.2),
+        0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto de brillo en el borde del mapa */
+.map-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #e74c3c, #3498db, #2ecc71, #9b59b6, #e74c3c);
+    background-size: 300% 300%;
+    border-radius: 27px;
+    z-index: -1;
+    animation: gradientBorder 4s ease infinite;
+    opacity: 0.6;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 22px;
+    filter: grayscale(20%) contrast(1.1);
+    transition: all 0.3s ease;
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0%) contrast(1.2);
+    transform: scale(1.02);
+}
+
+/* Información adicional de ubicaciones */
+.location-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+.location-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(231, 76, 60, 0.1);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.location-card i {
+    font-size: 2.5rem;
+    color: #e74c3c;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
+}
+
+.location-card h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.8rem;
+}
+
+.location-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* =====================================================
+   11. SECCIÓN PREGUNTAS FRECUENTES
+   ===================================================== */
+
+/* Sección interactiva con las preguntas más comunes de nuestros clientes
+   Utiliza elementos details/summary para mejor experiencia de usuario */
+.faq {
+    position: relative;
+    padding: 80px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e74c3c 100%);
+    color: white;
+    overflow: hidden;
+}
+
+/* Efecto de fondo con partículas sutiles para FAQ */
+.faq::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(231, 76, 60, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(52, 152, 219, 0.05) 0%, transparent 35%),
+        radial-gradient(circle at 40% 70%, rgba(46, 204, 113, 0.05) 0%, transparent 25%),
+        radial-gradient(circle at 70% 80%, rgba(155, 89, 182, 0.05) 0%, transparent 20%);
+    animation: faqFloat 18s ease-in-out infinite;
+    z-index: 1;
+}
+
+.faq .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Título de la sección FAQ */
+.faq .section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.faq .section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #e74c3c, #3498db);
+    border-radius: 2px;
+}
+
+/* Lista de preguntas frecuentes */
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Estilo individual de cada pregunta */
+.faq-item {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.faq-item[open] {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: rgba(231, 76, 60, 0.2);
+}
+
+/* Estilo del resumen (pregunta clickeable) */
+.faq-item summary {
+    padding: 1.5rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.05), rgba(52, 152, 219, 0.05));
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Ícono en el summary */
+.faq-item summary i {
+    color: #e74c3c;
+    font-size: 1.2rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+.faq-item summary:hover {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(52, 152, 219, 0.1));
+    color: #e74c3c;
+}
+
+/* Indicador de expandir/colapsar */
+.faq-item summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e74c3c;
+    transition: transform 0.3s ease;
+    margin-left: auto;
+    min-width: 20px;
+    text-align: center;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+/* Ocultar marcador por defecto del details */
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Contenido de la respuesta */
+.faq-item p {
+    padding: 1.5rem 2rem 2rem;
+    margin: 0;
+    color: #555;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* =====================================================
+   12. SECCIÓN FOOTER
+   ===================================================== */
+
+/* Pie de página con información de la empresa, enlaces útiles,
+   información de contacto y enlaces a redes sociales */
 .footer {
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
     color: white;
-    padding: 3rem 0; /* Padding arriba y abajo para el contenido */
-    margin: 0; /* Sin márgenes */
+    padding: 3rem 0;
+    margin: 0;
     position: relative;
     overflow: hidden;
-    width: 100vw; /* Ocupa todo el ancho de la ventana */
-    margin-left: calc(-50vw + 50%); /* Centra y expande más allá del container */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
     box-sizing: border-box;
     min-height: auto;
 }
@@ -934,11 +1766,11 @@ body::before {
 .footer::after {
     content: '';
     position: absolute;
-    bottom: -100vh; /* Se extiende hacia abajo fuera de la ventana */
+    bottom: -100vh;
     left: 0;
     width: 100%;
-    height: 100vh; /* Altura de toda la ventana */
-    background: inherit; /* Hereda el degradado del footer */
+    height: 100vh;
+    background: inherit;
     z-index: 0;
 }
 
@@ -1062,8 +1894,8 @@ body::before {
 /* Footer bottom */
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem 0 0 0; /* Solo padding top, sin bottom */
-    margin-bottom: 0; /* Sin margen bottom */
+    padding: 2rem 0 0 0;
+    margin-bottom: 0;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -1077,7 +1909,14 @@ body::before {
     font-size: 0.9rem;
 }
 
-/* Animations */
+/* =====================================================
+   13. ANIMACIONES GLOBALES
+   ===================================================== */
+
+/* Colección de todas las animaciones keyframes utilizadas a lo largo del sitio
+   Organizadas por categoría: movimientos, efectos, transiciones */
+
+/* Animaciones de deslizamiento */
 @keyframes slideInLeft {
     from {
         opacity: 0;
@@ -1129,14 +1968,6 @@ body::before {
         transform: scale(1);
     }
 }
-
-.cart-animation {
-    animation: addToCartAnimation 0.3s ease;
-}
-
-/* ===========================================
-   NUEVAS ANIMACIONES DEPORTIVAS
-   =========================================== */
 
 /* Animación del gradiente de fondo */
 @keyframes gradientShift {
@@ -1221,10 +2052,6 @@ body::before {
     }
 }
 
-/* ===========================================
-   ANIMATION KEYFRAMES - LOCATION SECTION
-   =========================================== */
-
 /* Animación de flotación para el fondo de ubicación */
 @keyframes locationFloat {
     0%, 100% {
@@ -1264,10 +2091,6 @@ body::before {
     }
 }
 
-/* ===========================================
-   ANIMATION KEYFRAMES - FAQ SECTION
-   =========================================== */
-
 /* Animación de flotación para el fondo de FAQ */
 @keyframes faqFloat {
     0%, 100% {
@@ -1296,11 +2119,7 @@ body::before {
     }
 }
 
-/* ===========================================
-   ANIMACIONES PARA PRODUCT CONTROLS
-   =========================================== */
-
-/* Animación de partículas flotantes */
+/* Animaciones para partículas flotantes */
 @keyframes particleFloat {
     0%, 100% {
         transform: translate(0, 0) rotate(0deg) scale(1);
@@ -1344,29 +2163,6 @@ body::before {
         transform: translateY(0);
     }
 }
-
-/* Animación de pulsación suave */
-@keyframes softPulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 5px 20px rgba(231, 76, 60, 0.2);
-    }
-    50% {
-        transform: scale(1.02);
-        box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
-    }
-}
-
-/* Aplicar pulsación al contenedor principal */
-.product-controls:hover {
-    /*animation: softPulse 2s ease-in-out infinite;*/
-    box-shadow: 0 16px 48px rgba(231, 76, 60, 0.12), 0 2px 8px rgba(52, 152, 219, 0.06);
-    transform: scale(1.012);
-}
-
-/* ===========================================
-   ANIMACIONES PARA PARTÍCULAS Y LOADING
-   =========================================== */
 
 /* Animación de fondo simplificada */
 @keyframes backgroundShift {
@@ -1413,11 +2209,12 @@ body::before {
     }
 }
 
+/* =====================================================
+   14. MEDIA QUERIES - DISEÑO RESPONSIVO
+   ===================================================== */
 
-
-/* ===========================================
-   RESPONSIVE DESIGN PARA CONTACT Y FOOTER
-   =========================================== */
+/* Adaptaciones del diseño para diferentes tamaños de pantalla
+   Organizadas desde pantallas más grandes hasta móviles */
 
 /* Responsive para sección de contacto */
 @media (max-width: 768px) {
@@ -1443,56 +2240,6 @@ body::before {
     .footer-bottom {
         flex-direction: column;
         text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .contact {
-        padding: 60px 0;
-    }
-    
-    .contact-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .contact-item i {
-        margin-right: 0;
-        margin-bottom: 1rem;
-    }
-    
-    .form-group {
-        flex-direction: column;
-        border-radius: 15px;
-    }
-    
-    .form-group button {
-        border-radius: 0 0 15px 15px;
-    }
-    
-    .form-group input {
-        border-radius: 15px 15px 0 0;
-    }
-    
-    /* Product Controls Responsive */
-    .product-controls {
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 1.5rem;
-    }
-    
-    .sort-controls {
-        flex-direction: column;
-        gap: 0.8rem;
-        text-align: center;
-    }
-    
-    .sort-select {
-        min-width: 100%;
-    }
-    
-    .view-controls {
-        justify-content: center;
     }
 }
 
@@ -1530,8 +2277,6 @@ body::before {
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-
-    
 
     .products-grid {
         grid-template-columns: 1fr;
@@ -1599,11 +2344,29 @@ body::before {
     .faq-item p {
         padding: 1.3rem 1.5rem 1.8rem;
     }
+
+    .product-controls {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .sort-controls {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+    }
+    
+    .sort-select {
+        min-width: 100%;
+    }
+    
+    .view-controls {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
- 
-
     .nav-container {
         padding: 0.8rem 15px;
     }
@@ -1725,1105 +2488,36 @@ body::before {
     .feature-card p {
         font-size: 1rem;
     }
+
+    .contact {
+        padding: 60px 0;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-item i {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .form-group {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+    
+    .form-group button {
+        border-radius: 0 0 15px 15px;
+    }
+    
+    .form-group input {
+        border-radius: 15px 15px 0 0;
+    }
 }
 
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
 }
-
-/* ===========================================
-   PRODUCT CONTROLS STYLES - NUEVA SECCIÓN
-   =========================================== */
-
-/* Contenedor principal de controles */
-.product-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    padding: 1.5rem 2rem;
-    margin: 2rem 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(231, 76, 60, 0.1);
-    position: relative;
-    overflow: hidden;
-    animation: slideInUp 0.8s ease;
-}
-
-/* Efecto de partículas animadas de fondo */
-.product-controls::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(231, 76, 60, 0.05) 0%, transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.05) 0%, transparent 30%),
-        radial-gradient(circle at 60% 40%, rgba(46, 204, 113, 0.05) 0%, transparent 30%),
-        radial-gradient(circle at 30% 70%, rgba(155, 89, 182, 0.05) 0%, transparent 30%);
-    animation: particleFloat 8s ease-in-out infinite;
-    z-index: 1;
-}
-
-/* Gradiente decorativo superior */
-.product-controls::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #e74c3c, #3498db, #2ecc71, #9b59b6, #e74c3c);
-    background-size: 200% 100%;
-    animation: gradientMove 3s ease-in-out infinite;
-    z-index: 2;
-}
-
-.product-controls > * {
-    position: relative;
-    z-index: 3;
-}
-
-/* Controles de ordenamiento */
-.sort-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.sort-controls label {
-    font-weight: 600;
-    color: #333;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-}
-
-.sort-select {
-    padding: 0.8rem 1.2rem;
-    border: 2px solid rgba(231, 76, 60, 0.2);
-    border-radius: 12px;
-    background: white;
-    color: #333;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 200px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.sort-select:hover {
-    border-color: #e74c3c;
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
-    transform: translateY(-2px);
-}
-
-.sort-select:focus {
-    outline: none;
-    border-color: #e74c3c;
-    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
-}
-
-/* Controles de vista */
-.view-controls {
-    display: flex;
-    gap: 0.5rem;
-    background: rgba(231, 76, 60, 0.1);
-    padding: 0.5rem;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-}
-
-.view-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    border: none;
-    border-radius: 10px;
-    background: transparent;
-    color: #666;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Efecto de onda al hacer click */
-.view-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(231, 76, 60, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease;
-    z-index: -1;
-}
-
-.view-btn:hover::before {
-    width: 100%;
-    height: 100%;
-}
-
-.view-btn:hover {
-    color: #e74c3c;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
-}
-
-.view-btn.active {
-    background: #e74c3c;
-    color: white;
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
-    transform: scale(1.05);
-}
-
-.view-btn.active:hover {
-    background: #c0392b;
-}
-
-/* Smart Search Container Styles */
-.smart-search-container {
-    margin: 2rem 0;
-    position: relative;
-}
-
-.search-wrapper {
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.smart-search-input {
-    width: 100%;
-    padding: 1.2rem 1.5rem 1.2rem 3.5rem;
-    border: 2px solid rgba(231, 76, 60, 0.2);
-    border-radius: 50px;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.smart-search-input:focus {
-    outline: none;
-    border-color: #e74c3c;
-    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1), 0 10px 30px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-}
-
-.search-icon {
-    position: absolute;
-    left: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #e74c3c;
-    font-size: 1.2rem;
-    z-index: 2;
-}
-
-.clear-search {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(231, 76, 60, 0.1);
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    color: #e74c3c;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.clear-search:hover {
-    background: #e74c3c;
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-}
-
-/* Load More Button Styles */
-.load-more-container {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-.load-more-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 1.2rem 2.5rem;
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.load-more-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.load-more-btn:hover::before {
-    left: 100%;
-}
-
-.load-more-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
-}
-
-.load-more-btn i {
-    transition: transform 0.3s ease;
-}
-
-.load-more-btn:hover i {
-    transform: translateY(3px);
-}
-
-/* ===========================================
-   PRODUCTS LOADING STYLES CON ANIMACIONES
-   =========================================== */
-
-/* Contenedor principal del loading */
-.products-loading {
-    text-align: center;
-    padding: 4rem 2rem;
-    position: relative;
-    background: linear-gradient(135deg, 
-        rgba(231, 76, 60, 0.05) 0%, 
-        rgba(52, 152, 219, 0.05) 25%,
-        rgba(46, 204, 113, 0.05) 50%,
-        rgba(155, 89, 182, 0.05) 75%,
-        rgba(231, 76, 60, 0.05) 100%);
-    border-radius: 20px;
-    margin: 2rem 0;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(231, 76, 60, 0.1);
-}
-
-/* Fondo animado simple */
-.products-loading::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, 
-        rgba(231, 76, 60, 0.05) 0%, 
-        rgba(52, 152, 219, 0.05) 25%,
-        rgba(46, 204, 113, 0.05) 50%,
-        rgba(155, 89, 182, 0.05) 75%,
-        rgba(231, 76, 60, 0.05) 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 8s ease-in-out infinite;
-    z-index: 1;
-}
-
-/* Contenido del loading por encima de las animaciones */
-.products-loading > * {
-    position: relative;
-    z-index: 3;
-}
-
-/* Spinner mejorado */
-.loading-spinner {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 2rem;
-    border: 4px solid rgba(231, 76, 60, 0.2);
-    border-top: 4px solid #e74c3c;
-    border-radius: 50%;
-    animation: spin 1s linear infinite, pulseSpinner 2s ease-in-out infinite;
-    box-shadow: 
-        0 0 20px rgba(231, 76, 60, 0.3),
-        inset 0 0 20px rgba(231, 76, 60, 0.1);
-}
-
-/* Texto del loading */
-.products-loading p {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #333;
-    margin: 0;
-    animation: textPulse 3s ease-in-out infinite;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para products-grid con fondo animado */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    position: relative;
-    padding: 2rem 0;
-}
-
-/* Fondo animado para la sección de productos - SIMPLIFICADO */
-.products {
-    position: relative;
-    background: linear-gradient(135deg, 
-        rgb(215, 8, 8) 0%,
-        rgba(55, 138, 221, 0.98) 25%,
-        rgba(231, 76, 60, 0.02) 50%,
-        rgba(212, 61, 6, 0.98) 75%,
-        rgba(55, 138, 221, 0.98) 100%);
-    background-size: 200% 200%;
-    animation: backgroundShift 12s ease-in-out infinite;
-}
-/* ===========================================
-   FAQ SECTION STYLES - MEJORADO
-   =========================================== */
-
-.faq {
-    position: relative;
-    padding: 80px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e74c3c 100%);
-    color: white;
-    overflow: hidden;
-}
-
-/* Efecto de fondo con partículas sutiles para FAQ */
-.faq::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(231, 76, 60, 0.05) 0%, transparent 30%),
-        radial-gradient(circle at 80% 20%, rgba(52, 152, 219, 0.05) 0%, transparent 35%),
-        radial-gradient(circle at 40% 70%, rgba(46, 204, 113, 0.05) 0%, transparent 25%),
-        radial-gradient(circle at 70% 80%, rgba(155, 89, 182, 0.05) 0%, transparent 20%);
-    animation: faqFloat 18s ease-in-out infinite;
-    z-index: 1;
-}
-
-.faq .container {
-    position: relative;
-    z-index: 10;
-}
-
-/* Título de la sección FAQ */
-.faq .section-title {
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    margin-bottom: 3rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative;
-}
-
-.faq .section-title::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #e74c3c, #3498db);
-    border-radius: 2px;
-}
-
-/* Lista de preguntas frecuentes */
-.faq-list {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-/* Estilo individual de cada pregunta */
-.faq-item {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(231, 76, 60, 0.1);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.faq-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.faq-item[open] {
-    background: rgba(255, 255, 255, 0.98);
-    border-color: rgba(231, 76, 60, 0.2);
-}
-
-/* Estilo del resumen (pregunta) */
-.faq-item summary {
-    padding: 1.5rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    background: linear-gradient(135deg, rgba(231, 76, 60, 0.05), rgba(52, 152, 219, 0.05));
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    position: relative;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-/* Ícono en el summary */
-.faq-item summary i {
-    color: #e74c3c;
-    font-size: 1.2rem;
-    min-width: 20px;
-    text-align: center;
-}
-
-.faq-item summary:hover {
-    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(52, 152, 219, 0.1));
-    color: #e74c3c;
-}
-
-/* Icono personalizado para el summary */
-.faq-item summary::after {
-    content: '+';
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #e74c3c;
-    transition: transform 0.3s ease;
-    margin-left: auto;
-    min-width: 20px;
-    text-align: center;
-}
-
-.faq-item[open] summary::after {
-    transform: rotate(45deg);
-}
-
-/* Ocultar el marcador por defecto del details */
-.faq-item summary::-webkit-details-marker {
-    display: none;
-}
-
-/* Contenido de la respuesta */
-.faq-item p {
-    padding: 1.5rem 2rem 2rem;
-    margin: 0;
-    line-height: 1.7;
-    color: #666;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.5);
-}
-
-/* Animación de apertura */
-.faq-item[open] p {
-    animation: fadeInContent 0.3s ease;
-}
-.mapa .ubicacion {
-    position: relative;
-    background: linear-gradient(135deg, 
-        rgb(215, 8, 8) 0%,
-        rgba(55, 138, 221, 0.98) 25%,
-        rgba(231, 76, 60, 0.02) 50%,
-        rgba(212, 61, 6, 0.98) 75%,
-        rgba(55, 138, 221, 0.98) 100%);
-    background-size: 200% 200%;
-    animation: backgroundShift 12s ease-in-out infinite;
-}
-.reviews {
-    position: relative;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e74c3c 100%);
-    color: white;
-    overflow: hidden;
-    padding: 0; /* Eliminamos cualquier padding de la sección */
-}
-
-/* Container específico para la sección de reviews - sin márgenes */
-.reviews .container {
-    max-width: none; /* Eliminamos la limitación de anchura */
-    margin: 0; /* Eliminamos los márgenes automáticos */
-    padding: 80px 20px 100px 20px; /* Padding vertical con espacio extra al final */
-    width: 100%; /* Aseguramos que ocupe todo el ancho */
-}
-
-/* Título de la sección reviews */
-.reviews .section-title {
-    text-align: center;
-    margin-bottom: 50px;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* Grid de reviews para ocupar todo el ancho */
-.reviews-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    padding: 0 10px;
-}
-/* Fondo animado para la sección about - SIMPLIFICADO */
-
-.products .container {
-    position: relative;
-    z-index: 2;
-}
-
-/* Loading Animation for Product Cards */
-.product-card.loading {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.5s ease forwards;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Logo */
-.logo-img {
-    width: 80px;          
-    height: 80px;          
-    border-radius: 25%;   
-    object-fit: contain; 
-    display: block;       
-}
-
-/* ===========================================
-   LOCATION SECTION STYLES - MEJORADO
-   =========================================== */
-
-/* Sección de ubicación */
-.location {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #e74c3c 100%);
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Efecto de fondo con partículas sutiles */
-.location::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 15% 20%, rgba(231, 76, 60, 0.04) 0%, transparent 30%),
-        radial-gradient(circle at 85% 30%, rgba(52, 152, 219, 0.04) 0%, transparent 35%),
-        radial-gradient(circle at 50% 80%, rgba(46, 204, 113, 0.04) 0%, transparent 25%),
-        radial-gradient(circle at 25% 70%, rgba(155, 89, 182, 0.04) 0%, transparent 20%);
-    animation: locationFloat 20s ease-in-out infinite;
-    z-index: 1;
-}
-
-.location .container {
-    position: relative;
-    z-index: 10;
-}
-
-/* Título de la sección */
-.location .section-title {
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    margin-bottom: 3rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative;
-}
-
-.location .section-title::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, #e74c3c, #3498db);
-    border-radius: 2px;
-}
-
-/* Contenedor del mapa mejorado */
-.map-container {
-    position: relative;
-    overflow: hidden;
-    padding-top: 50%;
-    max-width: 900px;
-    margin: 0 auto;
-    border-radius: 25px;
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.15),
-        0 10px 25px rgba(0, 0, 0, 0.1);
-    background: white;
-    border: 3px solid rgba(231, 76, 60, 0.1);
-    transition: all 0.3s ease;
-    animation: mapFloat 6s ease-in-out infinite;
-}
-
-.map-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.2),
-        0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Efecto de brillo en el borde del mapa */
-.map-container::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #e74c3c, #3498db, #2ecc71, #9b59b6, #e74c3c);
-    background-size: 300% 300%;
-    border-radius: 27px;
-    z-index: -1;
-    animation: gradientBorder 4s ease infinite;
-    opacity: 0.6;
-}
-
-.map-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 22px;
-    filter: grayscale(20%) contrast(1.1);
-    transition: all 0.3s ease;
-}
-
-.map-container:hover iframe {
-    filter: grayscale(0%) contrast(1.2);
-    transform: scale(1.02);
-}
-
-/* Información adicional debajo del mapa */
-.location-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 4rem;
-    position: relative;
-    z-index: 10;
-}
-
-.location-card {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(231, 76, 60, 0.1);
-    transition: all 0.3s ease;
-    animation: fadeInUp 1s ease;
-}
-
-.location-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-.location-card i {
-    font-size: 2.5rem;
-    color: #e74c3c;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
-}
-
-.location-card h3 {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 0.8rem;
-}
-
-.location-card p {
-    color: #666;
-    line-height: 1.6;
-    font-size: 1rem;
-}
-
-/* Desaturar y ajustar opacidad de imágenes de productos por defecto */
-.product-img {
-    filter: grayscale(30%) saturate(0.7);
-    opacity: 0.85;
-    transition: filter 0.4s, opacity 0.4s;
-}
-
-.product-card:hover .product-img {
-    filter: grayscale(0%) saturate(1.3);
-    opacity: 1;
-}
-
-/* Resultados de búsqueda (dropdown) */
-.search-results {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    right: 0;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-    max-height: 240px;
-    overflow-y: auto;
-    z-index: 20;
-}
-
-.search-result-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.search-result-item:hover {
-    background: #f8f9fa;
-}
-
-.search-result-item small {
-    color: #e74c3c;
-    font-weight: 600;
-}
-
-.no-results {
-    padding: 0.75rem 1rem;
-    color: #666;
-}
-
-/* Vista en lista para productos */
-.products-grid.list-view {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-}
-
-.product-card .product-name,
-.product-card .product-description,
-.product-card .product-price,
-.product-card .product-stock {
-    mix-blend-mode: luminosity;
-    color: #fff;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.55), 0 1px 0 #000;
-    transition: color 0.3s;
-}
-
-.stars {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    margin-bottom: 0.2rem;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
-}
-
-.stars i {
-    font-size: 1.1rem;
-    color: #ffd700;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
-    mix-blend-mode: normal;
-}
-
-.rating-text {
-    margin-left: 0.4rem;
-    font-size: 0.95rem;
-    color: #fff;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.45);
-    mix-blend-mode: luminosity;
-}
-
-/* =========================================================
-   Fondo con MUCHAS partículas animadas (circulares, anillos,
-   cuadrados y triángulos) para:
-   - #products.products
-   - #about.about
-
-   Listo para copiar y pegar. No requiere cambios en el HTML.
-   Respeta tu paleta: usa variables CSS existentes si ya las definiste.
-   ========================================================= */
-
-/* Paleta: toma colores existentes si están definidos en tu CSS */
-:root {
-  --c1: var(--primary, var(--primary-color, #000000));  /* Teal */
-  --c2: var(--secondary, var(--secondary-color, #ff0000)); /* Green */
-  --c3: var(--accent, var(--accent-color, #fa1505));   /* Amber/Orange */
-  --c4: var(--info, var(--info-color, #021fff));       /* Blue */
-  --c5: var(--warning, var(--warning-color, #000000)); /* Yellow */
-}
-
-/* Asegura apilamiento correcto: contenido por encima del fondo animado */
-.products,
-.about {
-  position: relative;
-  overflow: hidden; /* Oculta los bordes de las partículas al animar */
-  z-index: 0;       /* Crea un contexto para los pseudo-elementos */
-}
-
-/* Eleva el contenido por encima de las partículas */
-.products .container,
-.about .container {
-  position: relative;
-  z-index: 10;
-}
-
-/* Capas base para las partículas */
-.products::before,
-.products::after {
-  content: "";
-  position: absolute;
-  inset: -18% -15%;   /* Sangría extra para animaciones amplias */
-  pointer-events: none;
-  background-repeat: no-repeat;
-  will-change: transform, background-position, filter, opacity;
-  z-index: 1;
-}
-
-/* =========================================================
-   CAPA 1 (::before): MUCHAS partículas circulares y anillos
-   - No usamos background-size aquí: cada gradiente posiciona su "punto"
-     en la sección mediante "at X% Y%" y radios en px.
-   - Más y más grandes respecto a la versión anterior.
-   ========================================================= */
-
-/* Products - capa de círculos y anillos */
-.products::before {
-  background-image:
-    /* Círculos grandes y medianos (superior) */
-    radial-gradient(circle at 5% 12%,    var(--c1) 0 8px, transparent 8.1px),
-    radial-gradient(circle at 12% 18%,   var(--c2) 0 6px, transparent 6.1px),
-    radial-gradient(circle at 20% 10%,   var(--c3) 0 7px, transparent 7.1px),
-    radial-gradient(circle at 28% 16%,   var(--c4) 0 9px, transparent 9.1px),
-    radial-gradient(circle at 36% 12%,   var(--c5) 0 6px, transparent 6.1px),
-    radial-gradient(circle at 44% 20%,   var(--c2) 0 8px, transparent 8.1px),
-    radial-gradient(circle at 52% 14%,   var(--c3) 0 10px, transparent 10.1px),
-    radial-gradient(circle at 60% 18%,   var(--c1) 0 7px, transparent 7.1px),
-    radial-gradient(circle at 70% 10%,   var(--c4) 0 8px, transparent 8.1px),
-    radial-gradient(circle at 82% 16%,   var(--c5) 0 6px, transparent 6.1px),
-    radial-gradient(circle at 92% 12%,   var(--c2) 0 8px, transparent 8.1px),
-
-    /* Anillos superiores */
-    radial-gradient(circle at 9% 8%,     transparent 0 10px, var(--c4) 10px 12px, transparent 12.5px),
-    radial-gradient(circle at 34% 6%,    transparent 0 12px, var(--c1) 12px 14px, transparent 14.5px),
-    radial-gradient(circle at 58% 8%,    transparent 0 11px, var(--c3) 11px 12px, transparent 12.5px),
-    radial-gradient(circle at 76% 6%,    transparent 0 13px, var(--c2) 13px 15px, transparent 15.5px),
-    radial-gradient(circle at 88% 9%,    transparent 0 10px, var(--c5) 10px 11px, transparent 11.5px),
-
-    /* Círculos (inferior) */
-    radial-gradient(circle at 8% 86%,    var(--c4) 0 9px, transparent 9.1px),
-    radial-gradient(circle at 18% 78%,   var(--c5) 0 7px, transparent 7.1px),
-    radial-gradient(circle at 28% 90%,   var(--c2) 0 8px, transparent 8.1px),
-    radial-gradient(circle at 40% 82%,   var(--c3) 0 6px, transparent 6.1px),
-    radial-gradient(circle at 52% 92%,   var(--c1) 0 10px, transparent 10.1px),
-    radial-gradient(circle at 64% 86%,   var(--c4) 0 8px, transparent 8.1px),
-    radial-gradient(circle at 76% 78%,   var(--c5) 0 7px, transparent 7.1px),
-    radial-gradient(circle at 88% 90%,   var(--c2) 0 9px, transparent 9.1px),
-
-    /* Anillos inferiores */
-    radial-gradient(circle at 14% 92%,   transparent 0 12px, var(--c1) 12px 14px, transparent 14.5px),
-    radial-gradient(circle at 36% 94%,   transparent 0 10px, var(--c5) 10px 12px, transparent 12.5px),
-    radial-gradient(circle at 62% 96%,   transparent 0 11px, var(--c2) 11px 13px, transparent 13.5px),
-    radial-gradient(circle at 84% 94%,   transparent 0 13px, var(--c3) 13px 15px, transparent 15.5px),
-
-    /* Círculos intermedios (zona media) */
-    radial-gradient(circle at 10% 50%,   var(--c2) 0 10px, transparent 10.1px),
-    radial-gradient(circle at 24% 48%,   var(--c3) 0 7px,  transparent 7.1px),
-    radial-gradient(circle at 38% 52%,   var(--c1) 0 9px,  transparent 9.1px),
-    radial-gradient(circle at 52% 46%,   var(--c4) 0 6px,  transparent 6.1px),
-    radial-gradient(circle at 66% 54%,   var(--c5) 0 8px,  transparent 8.1px),
-    radial-gradient(circle at 80% 48%,   var(--c3) 0 7px,  transparent 7.1px),
-    radial-gradient(circle at 92% 52%,   var(--c1) 0 10px, transparent 10.1px),
-
-    /* Anillos medios */
-    radial-gradient(circle at 18% 56%,   transparent 0 12px, var(--c4) 12px 13.5px, transparent 14px),
-    radial-gradient(circle at 44% 58%,   transparent 0 14px, var(--c2) 14px 16px,  transparent 16.5px),
-    radial-gradient(circle at 72% 56%,   transparent 0 11px, var(--c5) 11px 12.5px, transparent 13px);
-
-  opacity: 0.9;
-  animation: particles-drift-big 16s ease-in-out infinite alternate;
-  filter: drop-shadow(0 2px 2px rgba(0,0,0,.12));
-}
-
-
-
-/* =========================================================
-   CAPA 2 (::after): Partículas con más formas y tamaño controlado
-   - Mezcla de cuadrados, triángulos y círculos.
-   - Aquí SÍ usamos background-size y background-position por capa.
-   ========================================================= */
-
-/* Helper para las listas: fallback si el navegador no soporta listas largas (muy raro) */
-@supports (background: radial-gradient(circle, red, transparent)) {
-  .products::after {
-    /* 18 capas (sq/tri/circ) */
-    background-image:
-      /* 1 */ linear-gradient(0deg, var(--c1) 0 100%),
-      /* 2 */ conic-gradient(from 225deg, var(--c2) 0 120deg, transparent 120deg 360deg),
-      /* 3 */ linear-gradient(0deg, var(--c3) 0 100%),
-      /* 4 */ radial-gradient(circle, var(--c4) 0 50%, transparent 51%),
-      /* 5 */ conic-gradient(from 180deg, var(--c5) 0 120deg, transparent 120deg 360deg),
-      /* 6 */ linear-gradient(0deg, var(--c2) 0 100%),
-      /* 7 */ radial-gradient(circle, var(--c1) 0 50%, transparent 51%),
-      /* 8 */ conic-gradient(from 300deg, var(--c3) 0 120deg, transparent 120deg 360deg),
-      /* 9 */ linear-gradient(0deg, var(--c4) 0 100%),
-      /* 10 */ radial-gradient(circle, var(--c5) 0 50%, transparent 51%),
-      /* 11 */ conic-gradient(from 45deg, var(--c1) 0 120deg, transparent 120deg 360deg),
-      /* 12 */ linear-gradient(0deg, var(--c2) 0 100%),
-      /* 13 */ radial-gradient(circle, var(--c3) 0 50%, transparent 51%),
-      /* 14 */ conic-gradient(from 255deg, var(--c4) 0 120deg, transparent 120deg 360deg),
-      /* 15 */ linear-gradient(0deg, var(--c5) 0 100%),
-      /* 16 */ radial-gradient(circle, var(--c2) 0 50%, transparent 51%),
-      /* 17 */ conic-gradient(from 135deg, var(--c1) 0 120deg, transparent 120deg 360deg),
-      /* 18 */ linear-gradient(0deg, var(--c3) 0 100%);
-
-    background-size:
-      /* 1 */ 14px 14px,
-      /* 2 */ 18px 18px,
-      /* 3 */ 12px 12px,
-      /* 4 */ 12px 12px,
-      /* 5 */ 16px 16px,
-      /* 6 */ 14px 14px,
-      /* 7 */ 16px 16px,
-      /* 8 */ 20px 20px,
-      /* 9 */ 12px 12px,
-      /* 10 */ 18px 18px,
-      /* 11 */ 16px 16px,
-      /* 12 */ 14px 14px,
-      /* 13 */ 14px 14px,
-      /* 14 */ 18px 18px,
-      /* 15 */ 16px 16px,
-      /* 16 */ 20px 20px,
-      /* 17 */ 18px 18px,
-      /* 18 */ 14px 14px;
-
-    background-position:
-      /* 1 */ 6% 22%,
-      /* 2 */ 14% 16%,
-      /* 3 */ 22% 10%,
-      /* 4 */ 30% 18%,
-      /* 5 */ 38% 12%,
-      /* 6 */ 46% 20%,
-      /* 7 */ 54% 14%,
-      /* 8 */ 62% 18%,
-      /* 9 */ 70% 10%,
-      /* 10 */ 78% 16%,
-      /* 11 */ 86% 12%,
-      /* 12 */ 94% 18%,
-      /* 13 */ 12% 78%,
-      /* 14 */ 28% 86%,
-      /* 15 */ 44% 82%,
-      /* 16 */ 60% 90%,
-      /* 17 */ 76% 84%,
-      /* 18 */ 90% 88%;
-
-    opacity: 0.85;
-    animation: particles-orbit 12s cubic-bezier(.4, .0, .2, 1) infinite alternate;
-    background-repeat: no-repeat;
-    filter: drop-shadow(0 3px 4px rgba(0,0,0,.14));
-  }
-
-
-}
-
-/* =========================================================
-   Intensidad de movimiento y capas por sección
-   ========================================================= */
-
-/* Products: más rápidos y con mayor amplitud */
-.products::before { animation-duration: 14s; }
-.products::after  { animation-duration: 11s; }
-
-
-
-/* Opcional: puedes activar mezcla para un look más llamativo */
-/*
-.products::before, .products::after,
-.about::before, .about::after { mix-blend-mode: screen; }
-*/
-
-/* =========================================================
-   Accesibilidad: usuarios con "reduced motion"
-   ========================================================= */
-@media (prefers-reduced-motion: reduce) {
-  .products::before,
-  .products::after {
-    animation: none;
-    opacity: 0.25;  /* Mantiene el look sin distracción */
-    filter: none;
-  }
-}
-
-/* =========================================================
-   Animaciones (más amplias y dinámicas)
-   ========================================================= */
-
-/* Deriva amplia con ligera rotación y zoom */
-@keyframes particles-drift-big {
-  0%   { transform: translate3d(-4%,  6%, 0) rotate(-1.2deg) scale(1); }
-  50%  { transform: translate3d( 5%, -6%, 0) rotate( 1.2deg) scale(1.03); }
-  100% { transform: translate3d(-4%,  6%, 0) rotate(-1.2deg) scale(1); }
-}
-
-/* Órbita/vaivén con mayor amplitud */
-@keyframes particles-orbit {
-  0%   { transform: translate3d( 8%, -6%, 0) rotate(1.6deg)  scale(1.02); }
-  50%  { transform: translate3d(-8%,  6%, 0) rotate(-1.6deg) scale(1.05); }
-  100% { transform: translate3d( 8%, -6%, 0) rotate(1.6deg)  scale(1.02); }
-}
-
-/* =========================================================
-   Notas:
-   - Se añadieron MUCHAS más partículas, tamaños mayores (hasta 22px)
-     y animaciones con más amplitud y velocidad.
-   - Se incluyen formas: círculos, anillos, cuadrados y triángulos.
-   - Sin JS: alto rendimiento y compatible en navegadores modernos.
-   ========================================================= */
-/*
-
